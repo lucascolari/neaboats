@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Neaboats — Panel de Administración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #1D9E75; --teal-dark: #0F6E56; --teal-light: #E1F5EE;
+    --navy: #0a192f; --text: #111827; --text-sec: #6B7280;
+    --border: rgba(0,0,0,0.09); --bg: #ffffff; --bg-soft: #f7f9fc;
+    --radius: 12px;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg-soft); color: var(--text); min-height: 100vh; }
+
+  /* HEADER */
+  header {
+    background: var(--navy); padding: 0 2rem; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header-logo { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 600; color: #fff; }
+  .header-logo span { color: var(--teal); }
+  .header-tag { background: rgba(29,158,117,0.2); color: var(--teal); font-size: 12px; padding: 3px 10px; border-radius: 20px; }
+
+  /* LOGIN */
+  .login-wrap { min-height: calc(100vh - 60px); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .login-box { background: #fff; border: 0.5px solid var(--border); border-radius: 16px; padding: 2.5rem; width: 100%; max-width: 380px; text-align: center; }
+  .login-box h2 { font-family: 'Sora', sans-serif; font-size: 20px; margin-bottom: 0.5rem; }
+  .login-box p { font-size: 14px; color: var(--text-sec); margin-bottom: 2rem; }
+  .login-box input { width: 100%; border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; margin-bottom: 12px; }
+  .login-box input:focus { border-color: var(--teal); }
+  .btn-login { width: 100%; background: var(--teal); color: #fff; border: none; border-radius: var(--radius); padding: 12px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Sora', sans-serif; }
+  .btn-login:hover { background: var(--teal-dark); }
+  .login-error { color: #E24B4A; font-size: 13px; margin-top: 8px; display: none; }
+
+  /* MAIN */
+  .main { display: none; max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 8px; margin-bottom: 2rem; }
+  .tab { padding: 9px 20px; border-radius: 20px; border: 0.5px solid var(--border); font-size: 14px; cursor: pointer; background: #fff; color: var(--text-sec); font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+  .tab.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+  /* FORM */
+  .panel { background: #fff; border: 0.5px solid var(--border); border-radius: 16px; padding: 2rem; }
+  .panel h2 { font-family: 'Sora', sans-serif; font-size: 18px; margin-bottom: 0.4rem; }
+  .panel-sub { font-size: 14px; color: var(--text-sec); margin-bottom: 2rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fg { display: flex; flex-direction: column; gap: 5px; }
+  .fg.full { grid-column: 1/-1; }
+  .fg label { font-size: 13px; color: var(--text-sec); font-weight: 500; }
+  .fg input, .fg textarea, .fg select {
+    border: 0.5px solid var(--border); border-radius: 8px;
+    padding: 10px 12px; font-size: 14px; font-family: 'DM Sans', sans-serif;
+    color: var(--text); background: var(--bg); outline: none; transition: border-color 0.15s;
+  }
+  .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--teal); }
+  .fg textarea { resize: vertical; min-height: 80px; }
+
+  /* PHOTO UPLOAD */
+  .photo-upload-zone {
+    border: 2px dashed rgba(0,0,0,0.12); border-radius: var(--radius);
+    padding: 2rem; text-align: center; cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .photo-upload-zone:hover, .photo-upload-zone.drag { border-color: var(--teal); background: var(--teal-light); }
+  .photo-upload-zone i { font-size: 36px; color: var(--teal); margin-bottom: 8px; }
+  .photo-upload-zone p { font-size: 14px; color: var(--text-sec); margin-bottom: 4px; }
+  .photo-upload-zone small { font-size: 12px; color: #9CA3AF; }
+  .photo-previews { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .photo-preview-item { position: relative; }
+  .photo-preview-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 0.5px solid var(--border); }
+  .photo-preview-item .remove-photo {
+    position: absolute; top: -6px; right: -6px; width: 20px; height: 20px;
+    background: #E24B4A; color: #fff; border: none; border-radius: 50%;
+    font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .photo-uploading { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-sec); margin-top: 8px; }
+
+  /* SUBMIT */
+  .form-actions { display: flex; gap: 12px; margin-top: 1.5rem; }
+  .btn-submit {
+    flex: 1; background: var(--teal); color: #fff; border: none; border-radius: var(--radius);
+    padding: 13px; font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background 0.15s;
+  }
+  .btn-submit:hover { background: var(--teal-dark); }
+  .btn-submit:disabled { background: #9CA3AF; cursor: not-allowed; }
+  .btn-clear { background: none; color: var(--text-sec); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 13px 20px; font-size: 14px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+  /* SUCCESS */
+  .success-msg { display: none; background: var(--teal-light); border: 0.5px solid var(--teal); border-radius: var(--radius); padding: 1.25rem; margin-top: 1rem; }
+  .success-msg i { color: var(--teal); font-size: 20px; margin-right: 8px; }
+  .success-msg span { font-size: 14px; color: var(--teal-dark); font-weight: 500; }
+
+  /* SHEET LINK */
+  .sheet-link { display: flex; align-items: center; gap: 10px; background: var(--bg-soft); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 1.5rem; font-size: 14px; }
+  .sheet-link i { color: var(--teal); font-size: 20px; flex-shrink: 0; }
+  .sheet-link a { color: var(--teal); font-weight: 500; }
+
+  /* LANCHAS LIST */
+  .boats-list { display: flex; flex-direction: column; gap: 10px; }
+  .boat-row {
+    display: flex; align-items: center; gap: 14px;
+    background: #fff; border: 0.5px solid var(--border); border-radius: var(--radius);
+    padding: 12px 16px;
+  }
+  .boat-row-img { width: 56px; height: 42px; border-radius: 6px; object-fit: cover; background: var(--bg-soft); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .boat-row-info { flex: 1; }
+  .boat-row-name { font-size: 14px; font-weight: 500; }
+  .boat-row-meta { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+  .boat-row-price { font-size: 15px; font-weight: 600; color: var(--teal); flex-shrink: 0; }
+  .boat-row-badge { background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; }
+
+  /* CONFIG */
+  .config-row { display: flex; flex-direction: column; gap: 5px; margin-bottom: 1rem; }
+  .config-row label { font-size: 13px; color: var(--text-sec); font-weight: 500; }
+  .config-row input { border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; }
+  .config-row input:focus { border-color: var(--teal); }
+  .btn-save-config { background: var(--teal); color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .fg.full { grid-column: 1; }
+    .tabs { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo"><span>NEA</span>BOATS</div>
+  <span class="header-tag">Panel Admin</span>
+</header>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-box">
+    <i class="ti ti-lock" style="font-size:36px;color:var(--teal);margin-bottom:1rem"></i>
+    <h2>Acceso al panel</h2>
+    <p>Ingresá la contraseña para administrar las lanchas</p>
+    <input type="password" id="passwordInput" placeholder="Contraseña" onkeydown="if(event.key==='Enter')login()" />
+    <button class="btn-login" onclick="login()">Entrar</button>
+    <div class="login-error" id="loginError">Contraseña incorrecta</div>
+  </div>
+</div>
+
+<!-- MAIN PANEL -->
+<div class="main" id="mainPanel">
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('agregar',this)"><i class="ti ti-plus"></i> Agregar lancha</button>
+    <button class="tab" onclick="showTab('lanchas',this)"><i class="ti ti-list"></i> Ver lanchas</button>
+    <button class="tab" onclick="showTab('config',this)"><i class="ti ti-settings"></i> Configuración</button>
+  </div>
+
+  <!-- TAB: AGREGAR -->
+  <div id="tab-agregar" class="panel">
+    <h2>Agregar nueva lancha</h2>
+    <p class="panel-sub">Completá los datos y la lancha aparecerá automáticamente en la web.</p>
+
+    <div class="form-grid">
+      <div class="fg">
+        <label>Nombre / Modelo *</label>
+        <input type="text" id="aNombre" placeholder="Ej: Quicksilver 455 Open" />
+      </div>
+      <div class="fg">
+        <label>Precio (USD) *</label>
+        <input type="number" id="aPrecio" placeholder="Ej: 28500" />
+      </div>
+      <div class="fg">
+        <label>Año</label>
+        <input type="number" id="aAnio" placeholder="Ej: 2019" />
+      </div>
+      <div class="fg">
+        <label>Horas de uso</label>
+        <input type="text" id="aHoras" placeholder="Ej: 85" />
+      </div>
+      <div class="fg">
+        <label>Motor</label>
+        <input type="text" id="aMotor" placeholder="Ej: Mercury 150hp" />
+      </div>
+      <div class="fg">
+        <label>Eslora</label>
+        <input type="text" id="aEslora" placeholder="Ej: 18'" />
+      </div>
+      <div class="fg">
+        <label>Ubicación</label>
+        <input type="text" id="aUbicacion" placeholder="Ej: Resistencia, Chaco" />
+      </div>
+      <div class="fg">
+        <label>¿Marcar como nueva?</label>
+        <select id="aNuevo">
+          <option value="no">No</option>
+          <option value="si">Sí — mostrar badge "Nuevo"</option>
+        </select>
+      </div>
+      <div class="fg full">
+        <label>Descripción</label>
+        <textarea id="aDesc" placeholder="Describí el estado, accesorios, características especiales..."></textarea>
+      </div>
+      <div class="fg full">
+        <label>Fotos</label>
+        <div class="photo-upload-zone" id="uploadZone" onclick="document.getElementById('photoInput').click()"
+             ondragover="event.preventDefault();this.classList.add('drag')"
+             ondragleave="this.classList.remove('drag')"
+             ondrop="handleDrop(event)">
+          <i class="ti ti-photo-up"></i>
+          <p>Tocá para elegir fotos o arrastrá acá</p>
+          <small>JPG, PNG — podés subir varias a la vez</small>
+          <input type="file" id="photoInput" multiple accept="image/*" style="display:none" onchange="handlePhotos(this.files)" />
+        </div>
+        <div class="photo-previews" id="photoPreviews"></div>
+        <div class="photo-uploading" id="uploadingMsg" style="display:none">
+          <i class="ti ti-loader" style="animation:spin 1s linear infinite"></i>
+          Subiendo fotos...
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-submit" id="submitBtn" onclick="submitLancha()">
+        <i class="ti ti-upload"></i> Publicar lancha
+      </button>
+      <button class="btn-clear" onclick="clearForm()">Limpiar</button>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <i class="ti ti-circle-check"></i>
+      <span>¡Lancha publicada! Ya aparece en la web. <a href="index.html" target="_blank" style="color:var(--teal-dark)">Ver web →</a></span>
+    </div>
+  </div>
+
+  <!-- TAB: VER LANCHAS -->
+  <div id="tab-lanchas" class="panel" style="display:none">
+    <h2>Lanchas publicadas</h2>
+    <p class="panel-sub">Estas son las lanchas actualmente en tu planilla de Google Sheets.</p>
+    <div class="sheet-link">
+      <i class="ti ti-table"></i>
+      <span>Editá o eliminá lanchas directamente en <a href="#" id="sheetDirectLink" target="_blank">tu Google Sheet</a></span>
+    </div>
+    <div id="boatsList"><div style="text-align:center;padding:2rem;color:var(--text-sec)"><i class="ti ti-loader" style="animation:spin 1s linear infinite;font-size:24px"></i></div></div>
+  </div>
+
+  <!-- TAB: CONFIG -->
+  <div id="tab-config" class="panel" style="display:none">
+    <h2>Configuración</h2>
+    <p class="panel-sub">Ajustá los datos del panel.</p>
+
+    <div class="config-row">
+      <label>API Key de ImgBB (para subir fotos)</label>
+      <input type="text" id="imgbbKey" placeholder="Pegá tu API key de imgbb.com/api" />
+    </div>
+    <div class="config-row">
+      <label>Contraseña del panel</label>
+      <input type="password" id="newPassword" placeholder="Nueva contraseña" />
+    </div>
+    <div class="config-row">
+      <label>Google Sheet ID</label>
+      <input type="text" id="sheetIdInput" value="1YC_F0OwT9fBUDpUhhY1yt-T06A3hyysg_QyU085zljE" readonly style="background:var(--bg-soft);color:var(--text-sec)" />
+    </div>
+    <button class="btn-save-config" onclick="saveConfig()">Guardar cambios</button>
+    <div id="configMsg" style="margin-top:10px;font-size:13px;color:var(--teal);display:none">✓ Guardado</div>
+  </div>
+
+</div>
+
+<script>
+  // ── CONFIG ──
+  const SHEET_ID   = '1YC_F0OwT9fBUDpUhhY1yt-T06A3hyysg_QyU085zljE';
+  const SHEET_NAME = 'LANCHAS';
+  let IMGBB_KEY    = localStorage.getItem('imgbb_key') || 'd9037a4199f7d68e4a59e0a0b41b3fba';
+  let PASSWORD     = localStorage.getItem('admin_pass') || 'neaboats2024';
+  let uploadedUrls = [];
+
+  // Init
+  document.getElementById('imgbbKey').value = IMGBB_KEY;
+  document.getElementById('sheetDirectLink').href = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`;
+
+  // ── LOGIN ──
+  function login() {
+    const val = document.getElementById('passwordInput').value;
+    if (val === PASSWORD) {
+      document.getElementById('loginWrap').style.display = 'none';
+      document.getElementById('mainPanel').style.display = 'block';
+      loadBoatsList();
+    } else {
+      document.getElementById('loginError').style.display = 'block';
+    }
+  }
+
+  // ── TABS ──
+  function showTab(name, btn) {
+    document.querySelectorAll('[id^="tab-"]').forEach(t => t.style.display = 'none');
+    document.getElementById('tab-' + name).style.display = 'block';
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (name === 'lanchas') loadBoatsList();
+  }
+
+  // ── PHOTOS ──
+  function handleDrop(e) {
+    e.preventDefault();
+    document.getElementById('uploadZone').classList.remove('drag');
+    handlePhotos(e.dataTransfer.files);
+  }
+
+  async function handlePhotos(files) {
+    const key = document.getElementById('imgbbKey').value.trim() || IMGBB_KEY;
+    if (!key) {
+      alert('Primero configurá tu API Key de ImgBB en la pestaña Configuración.\n\n1. Andá a imgbb.com\n2. Registrate gratis\n3. Copiá tu API key en Configuración');
+      return;
+    }
+
+    document.getElementById('uploadingMsg').style.display = 'flex';
+    const previews = document.getElementById('photoPreviews');
+
+    for (const file of files) {
+      try {
+        // Convertir a base64
+        const base64 = await toBase64(file);
+        const base64Data = base64.split(',')[1];
+
+        const res = await fetch(`https://api.imgbb.com/1/upload?key=${key}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'image=' + encodeURIComponent(base64Data)
+        });
+        const data = await res.json();
+        if (data.success) {
+          const url = data.data.url;
+          uploadedUrls.push(url);
+          const item = document.createElement('div');
+          item.className = 'photo-preview-item';
+          item.dataset.url = url;
+          item.innerHTML = `<img src="${url}" /><button class="remove-photo" onclick="removePhoto(this,'${url}')">×</button>`;
+          previews.appendChild(item);
+        } else {
+          alert('Error subiendo foto: ' + (data.error?.message || 'API key incorrecta'));
+        }
+      } catch(err) {
+        console.error('Error subiendo foto:', err);
+        alert('Error subiendo foto. Verificá tu API key de ImgBB en Configuración.');
+      }
+    }
+    document.getElementById('uploadingMsg').style.display = 'none';
+  }
+
+  function toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function removePhoto(btn, url) {
+    uploadedUrls = uploadedUrls.filter(u => u !== url);
+    btn.closest('.photo-preview-item').remove();
+  }
+
+  // ── SUBMIT LANCHA (Google Sheets via Apps Script) ──
+  async function submitLancha() {
+    const nombre = document.getElementById('aNombre').value.trim();
+    const precio = document.getElementById('aPrecio').value.trim();
+    if (!nombre || !precio) { alert('Completá al menos el nombre y el precio.'); return; }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="ti ti-loader" style="animation:spin 1s linear infinite"></i> Publicando...';
+
+    const data = {
+      nombre,
+      precio,
+      año:         document.getElementById('aAnio').value,
+      horas:       document.getElementById('aHoras').value,
+      motor:       document.getElementById('aMotor').value,
+      eslora:      document.getElementById('aEslora').value,
+      ubicacion:   document.getElementById('aUbicacion').value,
+      foto:        uploadedUrls[0] || '',
+      descripcion: document.getElementById('aDesc').value,
+      nuevo:       document.getElementById('aNuevo').value,
+    };
+
+    // Enviar a Google Apps Script
+    const APPS_SCRIPT_URL = localStorage.getItem('apps_script_url') || 'https://script.google.com/macros/s/AKfycbyDJ1Hdyn6AVJY20s-E7JS0iv0X4MJCLdrnQkTARDgwkB8DXU1zhYw3MDkqb9rPbe0/exec';
+
+    if (!APPS_SCRIPT_URL) {
+      // Si no hay Apps Script configurado, mostrar instrucciones
+      showManualInstructions(data);
+      btn.disabled = false;
+      btn.innerHTML = '<i class="ti ti-upload"></i> Publicar lancha';
+      return;
+    }
+
+    try {
+      // Usar JSONP via iframe para evitar CORS con archivo local
+      const params = Object.entries(data).map(([k,v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join('&');
+      const fullUrl = APPS_SCRIPT_URL + '?action=add&' + params;
+      
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = fullUrl;
+      document.body.appendChild(iframe);
+      
+      await new Promise(resolve => setTimeout(resolve, 2500));
+      iframe.remove();
+      showSuccess();
+    } catch(err) {
+      showManualInstructions(data);
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = '<i class="ti ti-upload"></i> Publicar lancha';
+  }
+
+  function showSuccess() {
+    document.getElementById('successMsg').style.display = 'block';
+    clearForm();
+    setTimeout(() => document.getElementById('successMsg').style.display = 'none', 5000);
+  }
+
+  function showManualInstructions(data) {
+    const rows = Object.values(data).join('\t');
+    const msg = `Copiá esta línea y pegala en una nueva fila de tu Google Sheet:\n\n${Object.values(data).join(' | ')}`;
+    if (confirm('Para terminar la configuración automática necesitás crear un Google Apps Script (te explico cómo en 2 minutos).\n\n¿Querés copiar los datos de la lancha para pegarlos manualmente en el Sheet?')) {
+      navigator.clipboard.writeText(Object.values(data).join('\t')).then(() => {
+        alert('✓ Datos copiados. Ahora pegá con Ctrl+V en una nueva fila de tu Google Sheet.');
+      });
+    }
+  }
+
+  function clearForm() {
+    ['aNombre','aPrecio','aAnio','aHoras','aMotor','aEslora','aUbicacion','aDesc'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('aNuevo').value = 'no';
+    document.getElementById('photoPreviews').innerHTML = '';
+    uploadedUrls = [];
+  }
+
+  // ── LOAD BOATS LIST ──
+  async function loadBoatsList() {
+    const container = document.getElementById('boatsList');
+    try {
+      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+      const res = await fetch(url);
+      const text = await res.text();
+      const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
+      const rows = json.table.rows;
+      const cols = json.table.cols.map(c => c.label.toLowerCase().trim());
+
+      if (!rows || rows.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-sec);text-align:center;padding:2rem">No hay lanchas cargadas todavía.</p>';
+        return;
+      }
+
+      const get = (row, name) => {
+        const idx = cols.indexOf(name);
+        return idx >= 0 && row.c[idx] ? row.c[idx].v || '' : '';
+      };
+
+      container.innerHTML = '<div class="boats-list">' + rows.map(row => {
+        const nombre = get(row,'nombre');
+        const precio = parseInt(String(get(row,'precio')).replace(/\D/g,'')) || 0;
+        const anio   = get(row,'año') || get(row,'anio');
+        const motor  = get(row,'motor');
+        const foto   = get(row,'foto');
+        const nuevo  = (get(row,'nuevo')||'').toString().toLowerCase() === 'si';
+        if (!nombre) return '';
+        return `<div class="boat-row">
+          <div class="boat-row-img">${foto ? `<img src="${foto}" style="width:56px;height:42px;object-fit:cover;border-radius:6px">` : '<i class="ti ti-sailboat" style="color:#9CA3AF;font-size:20px"></i>'}</div>
+          <div class="boat-row-info">
+            <div class="boat-row-name">${nombre} ${nuevo ? '<span class="boat-row-badge">Nuevo</span>' : ''}</div>
+            <div class="boat-row-meta">${anio ? `${anio} · ` : ''}${motor || ''}</div>
+          </div>
+          <div class="boat-row-price">$${precio.toLocaleString('es-AR')}</div>
+        </div>`;
+      }).join('') + '</div>';
+    } catch(err) {
+      container.innerHTML = '<p style="color:var(--text-sec);text-align:center;padding:2rem">No se pudo conectar con la planilla. Verificá que esté pública.</p>';
+    }
+  }
+
+  // ── CONFIG ──
+  function saveConfig() {
+    const key  = document.getElementById('imgbbKey').value.trim();
+    const pass = document.getElementById('newPassword').value.trim();
+    if (key)  { localStorage.setItem('imgbb_key', key); IMGBB_KEY = key; }
+    if (pass) { localStorage.setItem('admin_pass', pass); PASSWORD = pass; }
+    document.getElementById('configMsg').style.display = 'block';
+    setTimeout(() => document.getElementById('configMsg').style.display = 'none', 2000);
+  }
+</script>
+</body>
+</html>
