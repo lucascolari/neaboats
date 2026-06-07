@@ -207,14 +207,14 @@
         <textarea id="aDesc" placeholder="Describí el estado, accesorios, características especiales..."></textarea>
       </div>
       <div class="fg full">
-        <label>Fotos</label>
+        <label>Fotos (hasta 6)</label>
         <div class="photo-upload-zone" id="uploadZone" onclick="document.getElementById('photoInput').click()"
              ondragover="event.preventDefault();this.classList.add('drag')"
              ondragleave="this.classList.remove('drag')"
              ondrop="handleDrop(event)">
           <i class="ti ti-photo-up"></i>
           <p>Tocá para elegir fotos o arrastrá acá</p>
-          <small>JPG, PNG — podés subir varias a la vez</small>
+          <small>JPG, PNG — hasta 6 fotos por lancha, se muestran en galería en la web</small>
           <input type="file" id="photoInput" multiple accept="image/*" style="display:none" onchange="handlePhotos(this.files)" />
         </div>
         <div class="photo-previews" id="photoPreviews"></div>
@@ -318,11 +318,20 @@
       alert('Primero configurá tu API Key de ImgBB en la pestaña Configuración.\n\n1. Andá a imgbb.com\n2. Registrate gratis\n3. Copiá tu API key en Configuración');
       return;
     }
+    if (uploadedUrls.length >= 6) {
+      alert('Ya tenés 6 fotos cargadas (el máximo). Eliminá alguna para agregar otra.');
+      return;
+    }
+    const remaining = 6 - uploadedUrls.length;
+    const filesToProcess = Array.from(files).slice(0, remaining);
+    if (files.length > remaining) {
+      alert('Solo se van a subir las primeras ' + remaining + ' foto(s). El máximo es 6.');
+    }
 
     document.getElementById('uploadingMsg').style.display = 'flex';
     const previews = document.getElementById('photoPreviews');
 
-    for (const file of files) {
+    for (const file of filesToProcess) {
       try {
         // Convertir a base64
         const base64 = await toBase64(file);
@@ -386,6 +395,11 @@
       eslora:      document.getElementById('aEslora').value,
       ubicacion:   document.getElementById('aUbicacion').value,
       foto:        uploadedUrls[0] || '',
+      foto2:       uploadedUrls[1] || '',
+      foto3:       uploadedUrls[2] || '',
+      foto4:       uploadedUrls[3] || '',
+      foto5:       uploadedUrls[4] || '',
+      foto6:       uploadedUrls[5] || '',
       descripcion: document.getElementById('aDesc').value,
       nuevo:       document.getElementById('aNuevo').value,
     };
@@ -403,7 +417,8 @@
 
     try {
       // Usar JSONP via iframe para evitar CORS con archivo local
-      const params = Object.entries(data).map(([k,v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join('&');
+      // Enviar todos los campos incluyendo foto2..foto6
+      const params = Object.entries(data).map(([k,v]) => encodeURIComponent(k) + '=' + encodeURIComponent(v)).join('&');
       const fullUrl = APPS_SCRIPT_URL + '?action=add&' + params;
       
       const iframe = document.createElement('iframe');
@@ -429,11 +444,11 @@
   }
 
   function showManualInstructions(data) {
-    const rows = Object.values(data).join('\t');
-    const msg = `Copiá esta línea y pegala en una nueva fila de tu Google Sheet:\n\n${Object.values(data).join(' | ')}`;
-    if (confirm('Para terminar la configuración automática necesitás crear un Google Apps Script (te explico cómo en 2 minutos).\n\n¿Querés copiar los datos de la lancha para pegarlos manualmente en el Sheet?')) {
-      navigator.clipboard.writeText(Object.values(data).join('\t')).then(() => {
-        alert('✓ Datos copiados. Ahora pegá con Ctrl+V en una nueva fila de tu Google Sheet.');
+    const cols = ['nombre','precio','año','horas','motor','eslora','ubicacion','foto','foto2','foto3','foto4','foto5','foto6','descripcion','nuevo'];
+    const vals = cols.map(k => data[k] || '');
+    if (confirm('Para publicar automáticamente necesitás un Google Apps Script configurado.\n\n¿Querés copiar los datos para pegarlos manualmente en el Sheet?')) {
+      navigator.clipboard.writeText(vals.join('\t')).then(() => {
+        alert('✓ Datos copiados. Pegá con Ctrl+V en una nueva fila de tu Google Sheet (columnas: ' + cols.join(', ') + ')');
       });
     }
   }
@@ -474,10 +489,11 @@
         const foto   = get(row,'foto');
         const nuevo  = (get(row,'nuevo')||'').toString().toLowerCase() === 'si';
         if (!nombre) return '';
+        const fotoCount = [get(row,'foto'),get(row,'foto2'),get(row,'foto3'),get(row,'foto4'),get(row,'foto5'),get(row,'foto6')].filter(Boolean).length;
         return `<div class="boat-row">
           <div class="boat-row-img">${foto ? `<img src="${foto}" style="width:56px;height:42px;object-fit:cover;border-radius:6px">` : '<i class="ti ti-sailboat" style="color:#9CA3AF;font-size:20px"></i>'}</div>
           <div class="boat-row-info">
-            <div class="boat-row-name">${nombre} ${nuevo ? '<span class="boat-row-badge">Nuevo</span>' : ''}</div>
+            <div class="boat-row-name">${nombre} ${nuevo ? '<span class="boat-row-badge">Nuevo</span>' : ''} ${fotoCount > 1 ? '<span class="boat-row-badge" style="background:#E1F5EE;color:#0F6E56">📷 ' + fotoCount + ' fotos</span>' : ''}</div>
             <div class="boat-row-meta">${anio ? `${anio} · ` : ''}${motor || ''}</div>
           </div>
           <div class="boat-row-price">$${precio.toLocaleString('es-AR')}</div>
