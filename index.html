@@ -4,16 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Neaboats — Broker náutico especializado en el NEA</title>
-<meta name="description" content="Broker náutico especializado en el NEA. Más de 20 lanchas vendidas. Solo cobramos si vendemos. Fotos profesionales y atención personalizada incluidas." />
+<meta name="description" content="Broker náutico especializado en el NEA. Más de 20 lanchas vendidas. Solo cobramos si vendemos." />
 <meta property="og:title" content="Neaboats — Broker náutico del NEA" />
 <meta property="og:description" content="Vendemos tu lancha como si fuera nuestra. Solo cobramos si vendemos." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://neaboats.com/og-image.jpg" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231D9E75'/><text y='.9em' font-size='70' x='12'>⛵</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+<style>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -274,77 +274,30 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 
-<style>
-.nav-logo-img {
-  height: 40px;
-  object-fit: contain;
-}
-.modal-gallery {
-  position: relative; width: 100%; height: 300px;
-  border-radius: 20px 20px 0 0; overflow: hidden;
-  background: #111; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.modal-gallery-track {
-  display: flex; height: 100%; width: 100%;
-  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
-}
-.modal-gallery-slide {
-  min-width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; display: block;
-}
-.gallery-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 38px; height: 38px; background: rgba(0,0,0,0.5);
-  border: none; border-radius: 50%; color: #fff; font-size: 22px;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  z-index: 10; transition: background 0.15s; padding: 0; line-height: 1;
-}
-.gallery-btn:hover { background: rgba(0,0,0,0.8); }
-.gallery-prev { left: 12px; }
-.gallery-next { right: 12px; }
-.gallery-dots {
-  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 6px; z-index: 10;
-}
-.gallery-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: rgba(255,255,255,0.45); cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-.gallery-dot.on { background: #fff; transform: scale(1.25); }
-.gallery-counter {
-  position: absolute; top: 12px; right: 12px;
-  background: rgba(0,0,0,0.5); color: #fff;
-  font-size: 11px; padding: 3px 9px; border-radius: 100px; z-index: 10;
-}
-.modal-close-btn {
-  position: absolute; top: 12px; left: 12px;
-  width: 32px; height: 32px; background: rgba(0,0,0,0.45);
-  border: none; border-radius: 50%; color: #fff; font-size: 18px;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  z-index: 20; transition: background 0.15s;
-}
-.modal-close-btn:hover { background: rgba(0,0,0,0.75); }
-.modal-location-badge {
-  position: absolute; bottom: 12px; left: 12px;
-  background: #1D9E75; color: #fff; font-size: 11px; font-weight: 500;
-  padding: 3px 10px; border-radius: 100px; z-index: 10;
-}
-.foto-badge {
-  position: absolute; bottom: 10px; left: 10px;
-  background: rgba(0,0,0,0.55); color: #fff; font-size: 10px;
-  padding: 2px 8px; border-radius: 100px; z-index: 2;
-  display: flex; align-items: center; gap: 3px;
-}
+.nav-logo-img { height: 40px; object-fit: contain; }
+.modal-gallery { position:relative;width:100%;height:300px;border-radius:20px 20px 0 0;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.modal-gallery-track { display:flex;height:100%;width:100%;transition:transform 0.35s cubic-bezier(.4,0,.2,1); }
+.modal-gallery-slide { min-width:100%;height:100%;object-fit:cover;flex-shrink:0;display:block; }
+.gallery-btn { position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;background:rgba(0,0,0,0.5);border:none;border-radius:50%;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.15s;padding:0;line-height:1; }
+.gallery-btn:hover { background:rgba(0,0,0,0.8); }
+.gallery-prev { left:12px; } .gallery-next { right:12px; }
+.gallery-dots { position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10; }
+.gallery-dot { width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.45);cursor:pointer;transition:background 0.2s,transform 0.2s; }
+.gallery-dot.on { background:#fff;transform:scale(1.25); }
+.gallery-counter { position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.5);color:#fff;font-size:11px;padding:3px 9px;border-radius:100px;z-index:10; }
+.modal-close-btn { position:absolute;top:12px;left:12px;width:32px;height:32px;background:rgba(0,0,0,0.45);border:none;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;transition:background 0.15s; }
+.modal-close-btn:hover { background:rgba(0,0,0,0.75); }
+.modal-location-badge { position:absolute;bottom:12px;left:12px;background:#1D9E75;color:#fff;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;z-index:10; }
+.foto-badge { position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);color:#fff;font-size:10px;padding:2px 8px;border-radius:100px;z-index:2;display:flex;align-items:center;gap:3px; }
 @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgODIiPgogIDx0ZXh0IHg9IjAiIHk9IjU2IgogICAgICAgIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLCdBcmlhbCBCb2xkJyxBcmlhbCxzYW5zLXNlcmlmIgogICAgICAgIGZvbnQtd2VpZ2h0PSI5MDAiCiAgICAgICAgZm9udC1zaXplPSI2MCIKICAgICAgICBmaWxsPSIjNURDQUE1Ij5ORUE8L3RleHQ+CiAgPHRleHQgeD0iMTIyIiB5PSI1NiIKICAgICAgICBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywnQXJpYWwgQm9sZCcsQXJpYWwsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXdlaWdodD0iOTAwIgogICAgICAgIGZvbnQtc2l6ZT0iNjAiCiAgICAgICAgZmlsbD0iIzc3Nzc3NyI+Qk9BVFM8L3RleHQ+CiAgPHRleHQgeD0iMiIgeT0iNzUiCiAgICAgICAgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC13ZWlnaHQ9IjMwMCIKICAgICAgICBmb250LXNpemU9IjEzIgogICAgICAgIGxldHRlci1zcGFjaW5nPSIzLjgiCiAgICAgICAgZmlsbD0iIzY2NjY2NiI+QlJPS0VSIE7DgVVUSUNPPC90ZXh0Pgo8L3N2Zz4=" alt="Neaboats" class="nav-logo-img">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgODIiPgogIDx0ZXh0IHg9IjAiIHk9IjU2IgogICAgICAgIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLCdBcmlhbCBCb2xkJyxBcmlhbCxzYW5zLXNlcmlmIgogICAgICAgIGZvbnQtd2VpZ2h0PSI5MDAiCiAgICAgICAgZm9udC1zaXplPSI2MCIKICAgICAgICBmaWxsPSIjNURDQUE1Ij5ORUE8L3RleHQ+CiAgPHRleHQgeD0iMTIyIiB5PSI1NiIKICAgICAgICBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywnQXJpYWwgQm9sZCcsQXJpYWwsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXdlaWdodD0iOTAwIgogICAgICAgIGZvbnQtc2l6ZT0iNjAiCiAgICAgICAgZmlsbD0iIzc3Nzc3NyI+Qk9BVFM8L3RleHQ+CiAgPHRleHQgeD0iMiIgeT0iNzUiCiAgICAgICAgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC13ZWlnaHQ9IjMwMCIKICAgICAgICBmb250LXNpemU9IjEzIgogICAgICAgIGxldHRlci1zcGFjaW5nPSIzLjgiCiAgICAgICAgZmlsbD0iIzY2NjY2NiI+QlJPS0VSIE7DgVVUSUNPPC90ZXh0Pgo8L3N2Zz4=" alt="Neaboats" class="nav-logo-img">
     </a>
     <div class="nav-links">
       <a href="#">Inicio</a>
@@ -367,7 +320,6 @@
   <a href="tel:+5493624662495"><i class="ti ti-phone"></i> +54 9 362 466 2495</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-dots"></div>
   <div class="hero-content">
@@ -400,7 +352,6 @@
   </div>
 </section>
 
-<!-- CATALOG -->
 <div class="section section-bg" id="catalog">
   <div class="section-inner">
     <div class="section-header">
@@ -434,7 +385,6 @@
   <div class="no-results" id="noResults"><i class="ti ti-search-off"></i><p>No hay lanchas que coincidan con los filtros.</p></div>
 </div>
 
-<!-- BENEFITS -->
 <div class="section" id="benefits" style="padding-top:3.5rem;padding-bottom:3.5rem">
   <div class="section-inner">
     <div class="section-header">
@@ -452,7 +402,6 @@
   </div>
 </div>
 
-<!-- PROCESS -->
 <div class="section section-bg">
   <div class="section-inner">
     <div class="section-header">
@@ -470,7 +419,6 @@
   </div>
 </div>
 
-<!-- COMPARE -->
 <div class="section">
   <div class="section-inner">
     <div class="section-header">
@@ -492,7 +440,6 @@
   </div>
 </div>
 
-<!-- TESTIMONIALS -->
 <div class="section section-bg" id="testimonials">
   <div class="section-inner">
     <div class="section-header">
@@ -507,13 +454,9 @@
   </div>
 </div>
 
-<!-- MAP -->
 <div class="map-section">
   <div class="map-inner">
-    <div class="map-header">
-      <h2>Zona de cobertura NEA</h2>
-      <p>Operamos en 4 provincias del noreste argentino</p>
-    </div>
+    <div class="map-header"><h2>Zona de cobertura NEA</h2><p>Operamos en 4 provincias del noreste argentino</p></div>
     <div class="map-grid">
       <div class="map-zones">
         <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Chaco</strong><span>Resistencia y Gran Chaco</span></div></div>
@@ -521,14 +464,11 @@
         <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Formosa</strong><span>Capital y zona costera</span></div></div>
         <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Misiones</strong><span>Posadas y costa del Paraná</span></div></div>
       </div>
-      <div class="map-embed">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1500000!2d-59.5!3d-27.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+      <div class="map-embed"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1500000!2d-59.5!3d-27.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     </div>
   </div>
 </div>
 
-<!-- CONTACT -->
 <div class="section" id="contact">
   <div class="section-inner">
     <div class="contact-grid">
@@ -563,9 +503,7 @@
             <div class="fg full">
               <label>Fotos (opcional)</label>
               <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
-                <i class="ti ti-upload"></i>
-                <p>Arrastrá las fotos aquí o hacé clic para seleccionar</p>
-                <small>JPG, PNG hasta 10MB cada una</small>
+                <i class="ti ti-upload"></i><p>Arrastrá las fotos aquí o hacé clic para seleccionar</p><small>JPG, PNG hasta 10MB cada una</small>
                 <input id="fileInput" type="file" multiple accept="image/*" style="display:none" onchange="previewImages(this)" />
               </div>
               <div class="upload-previews" id="uploadPreviews"></div>
@@ -575,8 +513,7 @@
           </div>
         </div>
         <div class="form-success" id="formSuccess">
-          <i class="ti ti-circle-check"></i>
-          <h3>¡Mensaje enviado!</h3>
+          <i class="ti ti-circle-check"></i><h3>¡Mensaje enviado!</h3>
           <p>Mateo va a contactarte en menos de 24 horas para comenzar el proceso de venta.</p>
           <div style="margin-top:1.5rem">
             <button class="btn-consult" style="width:100%;justify-content:center;padding:12px;font-size:14px" onclick="openWA('Hola Mateo, acabo de completar el formulario en tu web. Quedo a disposición.')">
@@ -589,7 +526,6 @@
   </div>
 </div>
 
-<!-- CTA -->
 <div class="cta-band">
   <h2>¿Querés vender tu lancha sin estrés?</h2>
   <p>Empecemos hoy. Solo cobramos si vendemos.</p>
@@ -598,14 +534,11 @@
   </button>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <div style="margin-bottom:1rem">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgODIiPgogIDx0ZXh0IHg9IjAiIHk9IjU2IgogICAgICAgIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLCdBcmlhbCBCb2xkJyxBcmlhbCxzYW5zLXNlcmlmIgogICAgICAgIGZvbnQtd2VpZ2h0PSI5MDAiCiAgICAgICAgZm9udC1zaXplPSI2MCIKICAgICAgICBmaWxsPSIjNURDQUE1Ij5ORUE8L3RleHQ+CiAgPHRleHQgeD0iMTIyIiB5PSI1NiIKICAgICAgICBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywnQXJpYWwgQm9sZCcsQXJpYWwsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXdlaWdodD0iOTAwIgogICAgICAgIGZvbnQtc2l6ZT0iNjAiCiAgICAgICAgZmlsbD0iIzc3Nzc3NyI+Qk9BVFM8L3RleHQ+CiAgPHRleHQgeD0iMiIgeT0iNzUiCiAgICAgICAgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC13ZWlnaHQ9IjMwMCIKICAgICAgICBmb250LXNpemU9IjEzIgogICAgICAgIGxldHRlci1zcGFjaW5nPSIzLjgiCiAgICAgICAgZmlsbD0iIzY2NjY2NiI+QlJPS0VSIE7DgVVUSUNPPC90ZXh0Pgo8L3N2Zz4=" alt="Neaboats" style="height:36px;object-fit:contain;">
-        </div>
+        <div style="margin-bottom:1rem"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgODIiPgogIDx0ZXh0IHg9IjAiIHk9IjU2IgogICAgICAgIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLCdBcmlhbCBCb2xkJyxBcmlhbCxzYW5zLXNlcmlmIgogICAgICAgIGZvbnQtd2VpZ2h0PSI5MDAiCiAgICAgICAgZm9udC1zaXplPSI2MCIKICAgICAgICBmaWxsPSIjNURDQUE1Ij5ORUE8L3RleHQ+CiAgPHRleHQgeD0iMTIyIiB5PSI1NiIKICAgICAgICBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywnQXJpYWwgQm9sZCcsQXJpYWwsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXdlaWdodD0iOTAwIgogICAgICAgIGZvbnQtc2l6ZT0iNjAiCiAgICAgICAgZmlsbD0iIzc3Nzc3NyI+Qk9BVFM8L3RleHQ+CiAgPHRleHQgeD0iMiIgeT0iNzUiCiAgICAgICAgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC13ZWlnaHQ9IjMwMCIKICAgICAgICBmb250LXNpemU9IjEzIgogICAgICAgIGxldHRlci1zcGFjaW5nPSIzLjgiCiAgICAgICAgZmlsbD0iIzY2NjY2NiI+QlJPS0VSIE7DgVVUSUNPPC90ZXh0Pgo8L3N2Zz4=" alt="Neaboats" style="height:36px;object-fit:contain;"></div>
         <p class="footer-brand-desc">Broker náutico especializado en el NEA. Conectamos compradores y vendedores con transparencia y experiencia local.</p>
       </div>
       <div class="footer-col">
@@ -629,7 +562,6 @@
 <a href="https://www.instagram.com/nea.boats/" target="_blank" class="wa-float" title="Instagram" style="bottom:90px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)"><i class="ti ti-brand-instagram"></i></a>
 <a href="https://wa.me/5493624662495?text=Hola%20Mateo%2C%20vi%20tu%20web%20y%20me%20interesa%20saber%20m%C3%A1s." target="_blank" class="wa-float"><i class="ti ti-brand-whatsapp"></i></a>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="boatModal" onclick="closeModalIfOverlay(event)">
   <div class="modal">
     <div class="modal-gallery" id="modalGallery">
@@ -662,196 +594,327 @@
 </div>
 
 <script>
+
 const SHEET_ID   = '1YC_F0OwT9fBUDpUhhY1yt-T06A3hyysg_QyU085zljE';
 const SHEET_NAME = 'LANCHAS';
 const WA_NUMBER  = '5493624662495';
-// Columnas de fotos — el Sheet tiene FOTO, FOTO2 ... FOTO6
-const FOTO_COLS  = ['foto','foto2','foto3','foto4','foto5','foto6','photo','photo2','photo3','photo4','photo5','photo6','imagen','imagen2','imagen3','imagen4','imagen5','imagen6'];
-const COLORS     = ['linear-gradient(135deg,#e0f2eb,#c9eadf)','linear-gradient(135deg,#ddeaf8,#c9ddf2)','linear-gradient(135deg,#f2ece0,#ede1c9)','linear-gradient(135deg,#f0e8f2,#e2d0e8)','linear-gradient(135deg,#f2f0e0,#ede6c9)'];
-const ICOLORS    = ['#1D9E75','#185FA5','#854F0B','#534AB7','#0F6E56'];
 
-let gCur=0, gTot=0;
+// Columnas de fotos — lee FOTO, FOTO2 ... FOTO6 por nombre de columna
+const FOTO_COLS = ['foto','foto2','foto3','foto4','foto5','foto6',
+                   'photo','photo2','photo3','photo4','photo5','photo6',
+                   'imagen','imagen2','imagen3','imagen4','imagen5','imagen6'];
+
+const COLORS  = ['linear-gradient(135deg,#e0f2eb,#c9eadf)','linear-gradient(135deg,#ddeaf8,#c9ddf2)','linear-gradient(135deg,#f2ece0,#ede1c9)','linear-gradient(135deg,#f0e8f2,#e2d0e8)','linear-gradient(135deg,#f2f0e0,#ede6c9)'];
+const ICOLORS = ['#1D9E75','#185FA5','#854F0B','#534AB7','#0F6E56'];
+
+let gCur = 0, gTot = 0;
 
 function buildGallery(fotos) {
-  const track=document.getElementById('galleryTrack'), dots=document.getElementById('galleryDots'),
-        prev=document.getElementById('galleryPrev'),   next=document.getElementById('galleryNext'),
-        ctr=document.getElementById('galleryCounter');
-  track.innerHTML=''; dots.innerHTML=''; gCur=0; gTot=fotos.length;
-  if(!fotos.length) {
-    track.innerHTML='<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><i class="ti ti-sailboat" style="font-size:64px;opacity:0.18;color:#1D9E75"></i></div>';
-    prev.style.display=next.style.display=ctr.style.display='none'; return;
+  const track = document.getElementById('galleryTrack'),
+        dots   = document.getElementById('galleryDots'),
+        prev   = document.getElementById('galleryPrev'),
+        next   = document.getElementById('galleryNext'),
+        ctr    = document.getElementById('galleryCounter');
+  track.innerHTML = ''; dots.innerHTML = ''; gCur = 0; gTot = fotos.length;
+  if (!fotos.length) {
+    track.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><i class="ti ti-sailboat" style="font-size:64px;opacity:0.18;color:#1D9E75"></i></div>';
+    prev.style.display = next.style.display = ctr.style.display = 'none'; return;
   }
-  fotos.forEach((url,i)=>{
-    const img=document.createElement('img'); img.src=url; img.className='modal-gallery-slide'; img.alt='Foto '+(i+1);
-    img.onerror=function(){this.style.opacity='0';};
+  fotos.forEach((url, i) => {
+    const img = document.createElement('img');
+    img.src = url; img.className = 'modal-gallery-slide'; img.alt = 'Foto ' + (i+1);
+    img.onerror = function() { this.style.opacity = '0'; };
     track.appendChild(img);
-    if(fotos.length>1){
-      const d=document.createElement('div'); d.className='gallery-dot'+(i===0?' on':''); d.onclick=()=>gTo(i); dots.appendChild(d);
+    if (fotos.length > 1) {
+      const d = document.createElement('div');
+      d.className = 'gallery-dot' + (i === 0 ? ' on' : '');
+      d.onclick = () => gTo(i);
+      dots.appendChild(d);
     }
   });
-  prev.style.display=next.style.display=fotos.length>1?'flex':'none';
-  ctr.style.display=fotos.length>1?'block':'none';
+  prev.style.display = next.style.display = fotos.length > 1 ? 'flex' : 'none';
+  ctr.style.display  = fotos.length > 1 ? 'block' : 'none';
   gTo(0);
 }
+
 function gTo(i) {
-  if(i<0)i=gTot-1; if(i>=gTot)i=0; gCur=i;
-  document.getElementById('galleryTrack').style.transform=`translateX(${-i*100}%)`;
-  document.querySelectorAll('.gallery-dot').forEach((d,j)=>d.classList.toggle('on',j===i));
-  document.getElementById('galleryCounter').textContent=`${i+1} / ${gTot}`;
+  if (i < 0) i = gTot - 1; if (i >= gTot) i = 0; gCur = i;
+  document.getElementById('galleryTrack').style.transform = 'translateX(' + (-i * 100) + '%)';
+  document.querySelectorAll('.gallery-dot').forEach((d, j) => d.classList.toggle('on', j === i));
+  document.getElementById('galleryCounter').textContent = (i + 1) + ' / ' + gTot;
 }
-function galleryMove(d){gTo(gCur+d);}
-(function(){
-  let sx=0; const el=document.getElementById('modalGallery');
-  el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
-  el.addEventListener('touchend',e=>{const d=sx-e.changedTouches[0].clientX; if(Math.abs(d)>40)galleryMove(d>0?1:-1);},{passive:true});
+function galleryMove(d) { gTo(gCur + d); }
+
+(function() {
+  var sx = 0;
+  var el = document.getElementById('modalGallery');
+  el.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, {passive:true});
+  el.addEventListener('touchend',   function(e) {
+    var diff = sx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) galleryMove(diff > 0 ? 1 : -1);
+  }, {passive:true});
 })();
 
-async function loadBoatsFromSheets(){
-  const grid=document.getElementById('boatsGrid');
-  grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-sec)"><i class="ti ti-loader" style="font-size:28px;animation:spin 1s linear infinite"></i></div>';
-  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
-  let json;
+async function loadBoatsFromSheets() {
+  var grid = document.getElementById('boatsGrid');
+  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-sec)"><i class="ti ti-loader" style="font-size:28px;animation:spin 1s linear infinite"></i></div>';
+  var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
+  var json;
   try {
-    const r=await fetch(url); const t=await r.text();
-    json=JSON.parse(t.slice(t.indexOf('(')+1,t.lastIndexOf(')')));
+    var r = await fetch(url); var t = await r.text();
+    json = JSON.parse(t.slice(t.indexOf('(') + 1, t.lastIndexOf(')')));
   } catch(e) {
     try {
-      json=await new Promise((ok,fail)=>{
-        window._gsCb=ok;
-        const s=document.createElement('script'); s.src=url+'&cb=_gsCb';
-        s.onerror=()=>fail(); document.head.appendChild(s);
-        setTimeout(()=>fail(),8000);
+      json = await new Promise(function(ok, fail) {
+        window._gsCb = ok;
+        var s = document.createElement('script');
+        s.src = url + '&cb=_gsCb';
+        s.onerror = function() { fail(new Error('JSONP error')); };
+        document.head.appendChild(s);
+        setTimeout(function() { fail(new Error('Timeout')); }, 8000);
       });
     } catch(e2) {
-      grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--text-sec)"><i class="ti ti-alert-circle" style="font-size:36px;color:#E24B4A;display:block;margin-bottom:10px"></i><p style="font-weight:600;margin-bottom:6px">No se pudieron cargar las lanchas</p><p style="font-size:13px;opacity:0.6">Abrí el sitio desde GitHub Pages, no desde tu PC.</p></div>';
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--text-sec)"><i class="ti ti-alert-circle" style="font-size:36px;color:#E24B4A;display:block;margin-bottom:10px"></i><p style="font-weight:600;margin-bottom:6px">No se pudieron cargar las lanchas</p><p style="font-size:13px;opacity:0.6">Abrí el sitio desde GitHub Pages, no desde tu PC.</p></div>';
       return;
     }
   }
   renderBoats(json);
 }
 
-function parseFotos(row,cols){
-  const urls=[];
-  FOTO_COLS.forEach(k=>{
-    const i=cols.indexOf(k);
-    if(i>=0&&row.c[i]?.v){const v=String(row.c[i].v).trim(); if(v.startsWith('http')&&!urls.includes(v))urls.push(v);}
+function parseFotos(row, cols) {
+  var urls = [];
+  FOTO_COLS.forEach(function(k) {
+    var i = cols.indexOf(k);
+    if (i >= 0 && row.c[i] && row.c[i].v) {
+      var v = String(row.c[i].v).trim();
+      if (v.indexOf('http') === 0 && urls.indexOf(v) === -1) urls.push(v);
+    }
   });
-  if(urls.length===1){const sp=urls[0].split(/[,
-;]+/).map(u=>u.trim()).filter(u=>u.startsWith('http')); if(sp.length>1)return sp;}
+  // Si solo hay una URL pero contiene varias separadas por coma
+  if (urls.length === 1) {
+    var parts = urls[0].split(',').map(function(u) { return u.trim(); }).filter(function(u) { return u.indexOf('http') === 0; });
+    if (parts.length > 1) return parts;
+  }
   return urls;
 }
 
-function renderBoats(json){
-  const grid=document.getElementById('boatsGrid'), rows=json.table.rows;
-  const cols=json.table.cols.map(c=>(c.label||'').toLowerCase().trim());
-  if(!rows?.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-sec)">No hay lanchas disponibles.</div>';return;}
-  grid.innerHTML=''; let newest=null;
-  rows.forEach((row,i)=>{
-    const g=(...ns)=>{for(const n of ns){const i=cols.indexOf(n.toLowerCase()); if(i>=0&&row.c[i]?.v!=null)return String(row.c[i].v).trim();}return '';};
-    const nombre=g('modelo','nombre','name'), precio=g('precio','price'), anio=g('año','anio','year'),
-          horas=g('horas','hours'), motor=g('motor','engine'), eslora=g('eslora','length'),
-          ubicacion=g('ubicacion','ubicación','location','ciudad'), desc=g('descripcion','descripción','description','detalle'),
-          nuevo=g('nuevo','new').toLowerCase()==='si';
-    const precioNum=parseInt(String(precio).replace(/[^0-9]/g,''))||0;
-    if(!nombre)return;
-    const fotos=parseFotos(row,cols), pf=fotos[0]||'';
-    if(nuevo&&!newest)newest=`${nombre} · ${ubicacion} · $${precioNum.toLocaleString('es-AR')}`;
-    const ci=i%COLORS.length;
-    const imgH=pf?`<img src="${pf}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block" loading="lazy" onerror="this.style.display='none'">`:`<i class="ti ti-sailboat" style="font-size:52px;opacity:0.35;color:${ICOLORS[ci]}"></i>`;
-    const badge=fotos.length>1?`<span class="foto-badge"><i class="ti ti-camera" style="font-size:11px"></i> ${fotos.length} fotos</span>`:'';
-    const card=document.createElement('div');
-    card.className='boat-card';
-    Object.assign(card.dataset,{location:ubicacion,price:precioNum,year:anio,motor,name:nombre,eslora,horas,desc,fotos:JSON.stringify(fotos)});
-    card.style.cssText='opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .2s';
-    card.innerHTML=`
-      <div class="boat-img" style="background:${COLORS[ci]}" onclick="openModal(this.closest('.boat-card'))">
-        ${imgH}
-        ${ubicacion?`<span class="boat-location">${ubicacion}</span>`:''}
-        ${nuevo?'<span class="boat-badge-new">Nuevo</span>':''}
-        ${badge}
-      </div>
-      <div class="boat-info">
-        <div class="boat-name">${nombre}</div>
-        <div class="boat-specs">
-          ${anio?`<div class="boat-spec"><i class="ti ti-calendar"></i> Año: ${anio}</div>`:''}
-          ${horas?`<div class="boat-spec"><i class="ti ti-clock"></i> Horas: ${horas}</div>`:''}
-          ${motor?`<div class="boat-spec"><i class="ti ti-engine"></i> Motor: ${motor}</div>`:''}
-          ${eslora?`<div class="boat-spec"><i class="ti ti-ruler"></i> Eslora: ${eslora}</div>`:''}
-        </div>
-        <div class="boat-footer">
-          <span class="boat-price">$${precioNum.toLocaleString('es-AR')}</span>
-          <div class="boat-footer-btns">
-            <button class="btn-detail" onclick="openModal(this.closest('.boat-card'))"><i class="ti ti-eye"></i> Ver</button>
-            <button class="btn-consult" onclick="consultarWA('${nombre.replace(/'/g,"\'")}',' $${precioNum.toLocaleString('es-AR')}')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>
-          </div>
-        </div>
-      </div>`;
+function renderBoats(json) {
+  var grid = document.getElementById('boatsGrid');
+  var rows = json.table.rows;
+  // Leer nombres de columnas en minúscula
+  var cols = json.table.cols.map(function(c) { return (c.label || '').toLowerCase().trim(); });
+
+  if (!rows || rows.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-sec)">No hay lanchas disponibles.</div>';
+    return;
+  }
+
+  grid.innerHTML = '';
+  var newest = null;
+
+  rows.forEach(function(row, i) {
+    function get() {
+      var names = Array.prototype.slice.call(arguments);
+      for (var n = 0; n < names.length; n++) {
+        var idx = cols.indexOf(names[n].toLowerCase());
+        if (idx >= 0 && row.c[idx] && row.c[idx].v != null) return String(row.c[idx].v).trim();
+      }
+      return '';
+    }
+
+    var nombre    = get('modelo','nombre','name');
+    var precio    = get('precio','price');
+    var anio      = get('año','anio','year');
+    var horas     = get('horas','hours');
+    var motor     = get('motor','engine');
+    var eslora    = get('eslora','length');
+    var ubicacion = get('ubicacion','ubicación','location','ciudad');
+    var desc      = get('descripcion','descripción','description','detalle');
+    var nuevo     = get('nuevo','new').toLowerCase() === 'si';
+    var precioNum = parseInt(String(precio).replace(/[^0-9]/g, '')) || 0;
+
+    if (!nombre) return;
+
+    var fotos = parseFotos(row, cols);
+    var pf    = fotos[0] || '';
+
+    if (nuevo && !newest) newest = nombre + ' · ' + ubicacion + ' · $' + precioNum.toLocaleString('es-AR');
+
+    var ci = i % COLORS.length;
+    var imgH = pf
+      ? '<img src="' + pf + '" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block" loading="lazy" onerror="this.style.display=\'none\'">'
+      : '<i class="ti ti-sailboat" style="font-size:52px;opacity:0.35;color:' + ICOLORS[ci] + '"></i>';
+    var badge = fotos.length > 1
+      ? '<span class="foto-badge"><i class="ti ti-camera" style="font-size:11px"></i> ' + fotos.length + ' fotos</span>'
+      : '';
+
+    var card = document.createElement('div');
+    card.className = 'boat-card';
+    card.dataset.location = ubicacion;
+    card.dataset.price    = precioNum;
+    card.dataset.year     = anio;
+    card.dataset.motor    = motor;
+    card.dataset.name     = nombre;
+    card.dataset.eslora   = eslora;
+    card.dataset.horas    = horas;
+    card.dataset.desc     = desc;
+    card.dataset.fotos    = JSON.stringify(fotos);
+    card.style.cssText    = 'opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .2s';
+
+    card.innerHTML =
+      '<div class="boat-img" style="background:' + COLORS[ci] + '" onclick="openModal(this.closest(\'.boat-card\'))">' +
+        imgH +
+        (ubicacion ? '<span class="boat-location">' + ubicacion + '</span>' : '') +
+        (nuevo     ? '<span class="boat-badge-new">Nuevo</span>' : '') +
+        badge +
+      '</div>' +
+      '<div class="boat-info">' +
+        '<div class="boat-name">' + nombre + '</div>' +
+        '<div class="boat-specs">' +
+          (anio   ? '<div class="boat-spec"><i class="ti ti-calendar"></i> Año: '    + anio   + '</div>' : '') +
+          (horas  ? '<div class="boat-spec"><i class="ti ti-clock"></i> Horas: '     + horas  + '</div>' : '') +
+          (motor  ? '<div class="boat-spec"><i class="ti ti-engine"></i> Motor: '    + motor  + '</div>' : '') +
+          (eslora ? '<div class="boat-spec"><i class="ti ti-ruler"></i> Eslora: '    + eslora + '</div>' : '') +
+        '</div>' +
+        '<div class="boat-footer">' +
+          '<span class="boat-price">$' + precioNum.toLocaleString('es-AR') + '</span>' +
+          '<div class="boat-footer-btns">' +
+            '<button class="btn-detail" onclick="openModal(this.closest(\'.boat-card\'))"><i class="ti ti-eye"></i> Ver</button>' +
+            '<button class="btn-consult" onclick="consultarWA(\'' + nombre.replace(/'/g, "\\'") + '\',\'$' + precioNum.toLocaleString('es-AR') + '\')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
     grid.appendChild(card);
-    setTimeout(()=>{card.style.opacity='1';card.style.transform='translateY(0)';},i*80);
+    setTimeout(function() { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, i * 80);
     revealObserver.observe(card);
   });
-  if(newest){document.getElementById('newBannerText').textContent=newest;document.getElementById('newBanner').style.display='flex';}
-  populateFilters(rows,cols);
+
+  if (newest) {
+    document.getElementById('newBannerText').textContent = newest;
+    document.getElementById('newBanner').style.display = 'flex';
+  }
+  populateFilters(rows, cols);
 }
 
-function populateFilters(rows,cols){
-  const li=cols.findIndex(c=>c==='ubicacion'||c==='ubicación'||c==='location');
-  const mi=cols.findIndex(c=>c==='motor');
-  const locs=[...new Set(rows.map(r=>r.c[li]?.v).filter(Boolean))];
-  const mots=[...new Set(rows.map(r=>r.c[mi]?.v).filter(Boolean))];
-  const fL=document.getElementById('fLocation'),fM=document.getElementById('fMotor');
-  locs.forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent=l;fL.appendChild(o);});
-  mots.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;fM.appendChild(o);});
+function populateFilters(rows, cols) {
+  var li = cols.findIndex(function(c) { return c === 'ubicacion' || c === 'ubicación' || c === 'location'; });
+  var mi = cols.findIndex(function(c) { return c === 'motor'; });
+  var locs = [...new Set(rows.map(function(r) { return r.c[li] && r.c[li].v ? r.c[li].v : null; }).filter(Boolean))];
+  var mots = [...new Set(rows.map(function(r) { return r.c[mi] && r.c[mi].v ? r.c[mi].v : null; }).filter(Boolean))];
+  var fL = document.getElementById('fLocation'), fM = document.getElementById('fMotor');
+  locs.forEach(function(l) { var o = document.createElement('option'); o.value = l; o.textContent = l; fL.appendChild(o); });
+  mots.forEach(function(m) { var o = document.createElement('option'); o.value = m; o.textContent = m; fM.appendChild(o); });
 }
+
 loadBoatsFromSheets();
 
-function openModal(card){
-  const d=card.dataset, fotos=JSON.parse(d.fotos||'[]');
-  document.getElementById('modalLocation').textContent=d.location;
-  document.getElementById('modalName').textContent=d.name;
-  document.getElementById('modalPrice').textContent='$'+parseInt(d.price).toLocaleString('es-AR');
-  document.getElementById('modalYear').textContent=d.year||'—';
-  document.getElementById('modalHoras').textContent=d.horas?d.horas+' hs':'—';
-  document.getElementById('modalMotor').textContent=d.motor||'—';
-  document.getElementById('modalEslora').textContent=d.eslora||'—';
-  document.getElementById('modalLoc2').textContent=d.location;
-  document.getElementById('modalDesc').textContent=d.desc;
-  document.getElementById('modalWABtn').onclick=()=>consultarWA(d.name,'$'+parseInt(d.price).toLocaleString('es-AR'));
+function openModal(card) {
+  var d     = card.dataset;
+  var fotos = JSON.parse(d.fotos || '[]');
+  document.getElementById('modalLocation').textContent = d.location;
+  document.getElementById('modalName').textContent     = d.name;
+  document.getElementById('modalPrice').textContent    = '$' + parseInt(d.price).toLocaleString('es-AR');
+  document.getElementById('modalYear').textContent     = d.year  || '—';
+  document.getElementById('modalHoras').textContent    = d.horas ? d.horas + ' hs' : '—';
+  document.getElementById('modalMotor').textContent    = d.motor  || '—';
+  document.getElementById('modalEslora').textContent   = d.eslora || '—';
+  document.getElementById('modalLoc2').textContent     = d.location;
+  document.getElementById('modalDesc').textContent     = d.desc;
+  document.getElementById('modalWABtn').onclick = function() { consultarWA(d.name, '$' + parseInt(d.price).toLocaleString('es-AR')); };
   buildGallery(fotos);
   document.getElementById('boatModal').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function closeModal(){document.getElementById('boatModal').classList.remove('open');document.body.style.overflow='';}
-function closeModalIfOverlay(e){if(e.target===document.getElementById('boatModal'))closeModal();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(e.key==='ArrowLeft')galleryMove(-1);if(e.key==='ArrowRight')galleryMove(1);});
+function closeModal() { document.getElementById('boatModal').classList.remove('open'); document.body.style.overflow = ''; }
+function closeModalIfOverlay(e) { if (e.target === document.getElementById('boatModal')) closeModal(); }
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape')     closeModal();
+  if (e.key === 'ArrowLeft')  galleryMove(-1);
+  if (e.key === 'ArrowRight') galleryMove(1);
+});
 
-function openWA(msg){window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg),'_blank');}
-function consultarWA(n,p){openWA('Hola Mateo, vi la '+n+' ('+p+') en tu web y me gustaría recibir más información.');}
-function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('open');}
+function openWA(msg) { window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank'); }
+function consultarWA(n, p) { openWA('Hola Mateo, vi la ' + n + ' (' + p + ') en tu web y me gustaría recibir más información.'); }
+function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
-function animateCount(el,t,d){let v=0;const s=t/(d/16);const i=setInterval(()=>{v+=s;if(v>=t){el.textContent=t;clearInterval(i);}else el.textContent=Math.floor(v);},16);}
-const sObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){animateCount(document.getElementById('stat1'),20,1200);animateCount(document.getElementById('stat2'),4,900);animateCount(document.getElementById('stat3'),98,1500);animateCount(document.getElementById('stat4'),5,1000);sObs.disconnect();}}); },{threshold:0.3});
+function animateCount(el, target, dur) {
+  var v = 0, s = target / (dur / 16);
+  var t = setInterval(function() { v += s; if (v >= target) { el.textContent = target; clearInterval(t); } else el.textContent = Math.floor(v); }, 16);
+}
+var sObs = new IntersectionObserver(function(es) {
+  es.forEach(function(e) {
+    if (e.isIntersecting) {
+      animateCount(document.getElementById('stat1'), 20, 1200);
+      animateCount(document.getElementById('stat2'), 4, 900);
+      animateCount(document.getElementById('stat3'), 98, 1500);
+      animateCount(document.getElementById('stat4'), 5, 1000);
+      sObs.disconnect();
+    }
+  });
+}, {threshold: 0.3});
 sObs.observe(document.querySelector('.hero-stats'));
 
-function toggleFilters(){document.getElementById('filtersPanel').classList.toggle('open');document.getElementById('filterToggle').classList.toggle('active');}
-function applyFilters(){
-  const loc=document.getElementById('fLocation').value,price=document.getElementById('fPrice').value,year=document.getElementById('fYear').value,motor=document.getElementById('fMotor').value;
-  let v=0; document.querySelectorAll('.boat-card').forEach(c=>{const ok=(!loc||c.dataset.location===loc)&&(!price||parseInt(c.dataset.price)<=parseInt(price))&&(!year||parseInt(c.dataset.year)>=parseInt(year))&&(!motor||c.dataset.motor===motor);c.classList.toggle('hidden',!ok);if(ok)v++;});
-  document.getElementById('noResults').style.display=v===0?'block':'none';
+function toggleFilters() { document.getElementById('filtersPanel').classList.toggle('open'); document.getElementById('filterToggle').classList.toggle('active'); }
+function applyFilters() {
+  var loc = document.getElementById('fLocation').value, price = document.getElementById('fPrice').value,
+      year = document.getElementById('fYear').value,   motor = document.getElementById('fMotor').value;
+  var v = 0;
+  document.querySelectorAll('.boat-card').forEach(function(c) {
+    var ok = (!loc   || c.dataset.location === loc)
+          && (!price || parseInt(c.dataset.price) <= parseInt(price))
+          && (!year  || parseInt(c.dataset.year)  >= parseInt(year))
+          && (!motor || c.dataset.motor === motor);
+    c.classList.toggle('hidden', !ok); if (ok) v++;
+  });
+  document.getElementById('noResults').style.display = v === 0 ? 'block' : 'none';
 }
-function clearFilters(){['fLocation','fPrice','fYear','fMotor'].forEach(id=>document.getElementById(id).value='');document.querySelectorAll('.boat-card').forEach(c=>c.classList.remove('hidden'));document.getElementById('noResults').style.display='none';}
-function sortBoats(btn,type){document.querySelectorAll('[data-sort]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const g=document.getElementById('boatsGrid');[...g.querySelectorAll('.boat-card')].sort((a,b)=>type==='price-asc'?a.dataset.price-b.dataset.price:type==='price-desc'?b.dataset.price-a.dataset.price:b.dataset.year-a.dataset.year).forEach(c=>g.appendChild(c));}
-function previewImages(input){const c=document.getElementById('uploadPreviews');c.innerHTML='';[...input.files].forEach(f=>{const r=new FileReader();r.onload=e=>{const img=document.createElement('img');img.src=e.target.result;img.className='upload-preview';c.appendChild(img);};r.readAsDataURL(f);});}
-function submitForm(){
-  const nombre=document.getElementById('fNombre').value.trim(),tel=document.getElementById('fTel').value.trim(),ciudad=document.getElementById('fCiudad').value.trim();
-  if(!nombre||!tel||!ciudad){alert('Por favor completá los campos obligatorios: nombre, teléfono y ciudad.');return;}
-  const btn=document.getElementById('submitBtn');btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" style="animation:spin 1s linear infinite"></i> Enviando...';
-  fetch('https://formspree.io/f/mwvjvbzw',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({nombre,tel,email:document.getElementById('fEmail').value,ciudad,marca:document.getElementById('fMarca').value,modelo:document.getElementById('fModelo').value,anio:document.getElementById('fAnio').value,precio:document.getElementById('fPrecio').value,comentarios:document.getElementById('fComentarios').value})})
-  .then(()=>{document.getElementById('formContent').style.display='none';document.getElementById('formSuccess').style.display='block';})
-  .catch(()=>{openWA(`Hola Mateo, quiero vender mi lancha!\nNombre: ${nombre}\nTeléfono: ${tel}\nCiudad: ${ciudad}`);document.getElementById('formContent').style.display='none';document.getElementById('formSuccess').style.display='block';});
+function clearFilters() {
+  ['fLocation','fPrice','fYear','fMotor'].forEach(function(id) { document.getElementById(id).value = ''; });
+  document.querySelectorAll('.boat-card').forEach(function(c) { c.classList.remove('hidden'); });
+  document.getElementById('noResults').style.display = 'none';
 }
-const revealObserver=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
-document.querySelectorAll('.benefit-card,.step-card,.testi-card').forEach(el=>{el.style.cssText='opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .2s';revealObserver.observe(el);});
+function sortBoats(btn, type) {
+  document.querySelectorAll('[data-sort]').forEach(function(b) { b.classList.remove('active'); }); btn.classList.add('active');
+  var g = document.getElementById('boatsGrid');
+  Array.from(g.querySelectorAll('.boat-card'))
+    .sort(function(a, b) { return type === 'price-asc' ? a.dataset.price - b.dataset.price : type === 'price-desc' ? b.dataset.price - a.dataset.price : b.dataset.year - a.dataset.year; })
+    .forEach(function(c) { g.appendChild(c); });
+}
+function previewImages(input) {
+  var c = document.getElementById('uploadPreviews'); c.innerHTML = '';
+  Array.from(input.files).forEach(function(f) {
+    var r = new FileReader(); r.onload = function(e) { var img = document.createElement('img'); img.src = e.target.result; img.className = 'upload-preview'; c.appendChild(img); }; r.readAsDataURL(f);
+  });
+}
+function submitForm() {
+  var nombre = document.getElementById('fNombre').value.trim(),
+      tel    = document.getElementById('fTel').value.trim(),
+      ciudad = document.getElementById('fCiudad').value.trim();
+  if (!nombre || !tel || !ciudad) { alert('Por favor completá los campos obligatorios: nombre, teléfono y ciudad.'); return; }
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader" style="animation:spin 1s linear infinite"></i> Enviando...';
+  fetch('https://formspree.io/f/mwvjvbzw', {
+    method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({nombre: nombre, tel: tel, email: document.getElementById('fEmail').value,
+      ciudad: ciudad, marca: document.getElementById('fMarca').value, modelo: document.getElementById('fModelo').value,
+      anio: document.getElementById('fAnio').value, precio: document.getElementById('fPrecio').value,
+      comentarios: document.getElementById('fComentarios').value})
+  })
+  .then(function() { document.getElementById('formContent').style.display = 'none'; document.getElementById('formSuccess').style.display = 'block'; })
+  .catch(function() {
+    openWA('Hola Mateo, quiero vender mi lancha!\nNombre: ' + nombre + '\nTeléfono: ' + tel + '\nCiudad: ' + ciudad);
+    document.getElementById('formContent').style.display = 'none'; document.getElementById('formSuccess').style.display = 'block';
+  });
+}
+var revealObserver = new IntersectionObserver(function(es) {
+  es.forEach(function(e) { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+}, {threshold: 0.1});
+document.querySelectorAll('.benefit-card,.step-card,.testi-card').forEach(function(el) {
+  el.style.cssText = 'opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .2s';
+  revealObserver.observe(el);
+});
+
 </script>
 </body>
 </html>
