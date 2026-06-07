@@ -263,6 +263,10 @@
       <input type="password" id="newPassword" placeholder="Nueva contraseña" />
     </div>
     <div class="config-row">
+      <label>URL del Google Apps Script (para publicar lanchas)</label>
+      <input type="text" id="appsScriptUrl" placeholder="https://script.google.com/macros/s/..." value="https://script.google.com/macros/s/AKfycbxO9am8qhFvJo0gqDFJgriF1sU83XC8PknxDOjv17GKgI3h10TvCVkwuZNonHSQoGUv6w/exec" />
+    </div>
+    <div class="config-row">
       <label>Google Sheet ID</label>
       <input type="text" id="sheetIdInput" value="1YC_F0OwT9fBUDpUhhY1yt-T06A3hyysg_QyU085zljE" readonly style="background:var(--bg-soft);color:var(--text-sec)" />
     </div>
@@ -282,6 +286,7 @@
 
   // Init
   document.getElementById('imgbbKey').value = IMGBB_KEY;
+  document.getElementById('appsScriptUrl').value = localStorage.getItem('apps_script_url') || 'https://script.google.com/macros/s/AKfycbxO9am8qhFvJo0gqDFJgriF1sU83XC8PknxDOjv17GKgI3h10TvCVkwuZNonHSQoGUv6w/exec';
   document.getElementById('sheetDirectLink').href = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`;
 
   // ── LOGIN ──
@@ -405,7 +410,7 @@
     };
 
     // Enviar a Google Apps Script
-    const APPS_SCRIPT_URL = localStorage.getItem('apps_script_url') || 'https://script.google.com/macros/s/AKfycbyDJ1Hdyn6AVJY20s-E7JS0iv0X4MJCLdrnQkTARDgwkB8DXU1zhYw3MDkqb9rPbe0/exec';
+    const APPS_SCRIPT_URL = document.getElementById('appsScriptUrl')?.value.trim() || localStorage.getItem('apps_script_url') || 'https://script.google.com/macros/s/AKfycbxO9am8qhFvJo0gqDFJgriF1sU83XC8PknxDOjv17GKgI3h10TvCVkwuZNonHSQoGUv6w/exec';
 
     if (!APPS_SCRIPT_URL) {
       // Si no hay Apps Script configurado, mostrar instrucciones
@@ -506,10 +511,12 @@
 
   // ── CONFIG ──
   function saveConfig() {
-    const key  = document.getElementById('imgbbKey').value.trim();
-    const pass = document.getElementById('newPassword').value.trim();
-    if (key)  { localStorage.setItem('imgbb_key', key); IMGBB_KEY = key; }
-    if (pass) { localStorage.setItem('admin_pass', pass); PASSWORD = pass; }
+    const key     = document.getElementById('imgbbKey').value.trim();
+    const pass    = document.getElementById('newPassword').value.trim();
+    const asUrl   = document.getElementById('appsScriptUrl').value.trim();
+    if (key)   { localStorage.setItem('imgbb_key', key); IMGBB_KEY = key; }
+    if (pass)  { localStorage.setItem('admin_pass', pass); PASSWORD = pass; }
+    if (asUrl) { localStorage.setItem('apps_script_url', asUrl); }
     document.getElementById('configMsg').style.display = 'block';
     setTimeout(() => document.getElementById('configMsg').style.display = 'none', 2000);
   }
