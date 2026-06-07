@@ -680,14 +680,26 @@ async function loadBoatsFromSheets() {
 
 function parseFotos(row, cols) {
   var urls = [];
+  // Método 1: buscar por nombre de columna (foto, foto2 ... foto6)
   FOTO_COLS.forEach(function(k) {
     var i = cols.indexOf(k);
-    if (i >= 0 && row.c[i] && row.c[i].v) {
+    // Verificar que el índice existe Y que row.c tiene ese índice
+    if (i >= 0 && i < row.c.length && row.c[i] && row.c[i].v) {
       var v = String(row.c[i].v).trim();
       if (v.indexOf('http') === 0 && urls.indexOf(v) === -1) urls.push(v);
     }
   });
-  // Si solo hay una URL pero contiene varias separadas por coma
+  // Método 2: si encontramos menos de 6, buscar también por posición fija
+  // (por si los nombres de columna no matchean exactamente)
+  // Posiciones fijas: foto=7, foto2=8, foto3=9, foto4=10, foto5=11, foto6=12
+  var fotoPositions = [7, 8, 9, 10, 11, 12];
+  fotoPositions.forEach(function(pos) {
+    if (pos < row.c.length && row.c[pos] && row.c[pos].v) {
+      var v = String(row.c[pos].v).trim();
+      if (v.indexOf('http') === 0 && urls.indexOf(v) === -1) urls.push(v);
+    }
+  });
+  // Método 3: si una sola celda tiene varias URLs separadas por coma
   if (urls.length === 1) {
     var parts = urls[0].split(',').map(function(u) { return u.trim(); }).filter(function(u) { return u.indexOf('http') === 0; });
     if (parts.length > 1) return parts;
