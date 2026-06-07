@@ -274,7 +274,7 @@
 .nav-logo-img { height: 40px; object-fit: contain; }
 .modal-gallery { position:relative;width:100%;height:300px;border-radius:20px 20px 0 0;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
 .modal-gallery-track { display:flex;height:100%;width:100%;transition:transform 0.35s cubic-bezier(.4,0,.2,1); }
-.modal-gallery-slide { min-width:100%;height:100%;object-fit:cover;flex-shrink:0;display:block; }
+.modal-gallery-slide { flex:0 0 100%;width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;pointer-events:none; }
 .gallery-btn { position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;background:rgba(0,0,0,0.5);border:none;border-radius:50%;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.15s;padding:0;line-height:1; }
 .gallery-btn:hover { background:rgba(0,0,0,0.8); }
 .gallery-prev { left:12px; } .gallery-next { right:12px; }
@@ -636,19 +636,33 @@ function buildGallery(fotos) {
 
 function gTo(i) {
   if (i < 0) i = gTot - 1; if (i >= gTot) i = 0; gCur = i;
-  document.getElementById('galleryTrack').style.transform = 'translateX(' + (-i * 100) + '%)';
+  var track = document.getElementById('galleryTrack');
+  // Usar ancho real del contenedor en pixels para evitar bugs en mobile
+  var w = document.getElementById('modalGallery').offsetWidth;
+  track.style.transform = 'translateX(' + (-i * w) + 'px)';
   document.querySelectorAll('.gallery-dot').forEach((d, j) => d.classList.toggle('on', j === i));
   document.getElementById('galleryCounter').textContent = (i + 1) + ' / ' + gTot;
 }
 function galleryMove(d) { gTo(gCur + d); }
 
 (function() {
-  var sx = 0;
+  var sx = 0, sy = 0, dragging = false;
   var el = document.getElementById('modalGallery');
-  el.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, {passive:true});
-  el.addEventListener('touchend',   function(e) {
+  el.addEventListener('touchstart', function(e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+    dragging = false;
+  }, {passive:true});
+  el.addEventListener('touchmove', function(e) {
+    var dx = Math.abs(e.touches[0].clientX - sx);
+    var dy = Math.abs(e.touches[0].clientY - sy);
+    if (dx > dy) dragging = true; // swipe horizontal
+  }, {passive:true});
+  el.addEventListener('touchend', function(e) {
+    if (!dragging) return;
     var diff = sx - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) galleryMove(diff > 0 ? 1 : -1);
+    if (Math.abs(diff) > 30) galleryMove(diff > 0 ? 1 : -1);
+    dragging = false;
   }, {passive:true});
 })();
 
@@ -680,26 +694,18 @@ async function loadBoatsFromSheets() {
 
 function parseFotos(row, cols) {
   var urls = [];
-  // Método 1: buscar por nombre de columna (foto, foto2 ... foto6)
+  // Buscar foto, foto2 ... foto6 por nombre de columna
+  // IMPORTANTE: no verificar row.c.length porque gviz trunca celdas vacías al final
+  // En su lugar, acceder con row.c[i] que devuelve undefined si no existe (safe)
   FOTO_COLS.forEach(function(k) {
     var i = cols.indexOf(k);
-    // Verificar que el índice existe Y que row.c tiene ese índice
-    if (i >= 0 && i < row.c.length && row.c[i] && row.c[i].v) {
-      var v = String(row.c[i].v).trim();
+    var cell = i >= 0 ? (row.c[i] || null) : null;
+    if (cell && cell.v) {
+      var v = String(cell.v).trim();
       if (v.indexOf('http') === 0 && urls.indexOf(v) === -1) urls.push(v);
     }
   });
-  // Método 2: si encontramos menos de 6, buscar también por posición fija
-  // (por si los nombres de columna no matchean exactamente)
-  // Posiciones fijas: foto=7, foto2=8, foto3=9, foto4=10, foto5=11, foto6=12
-  var fotoPositions = [7, 8, 9, 10, 11, 12];
-  fotoPositions.forEach(function(pos) {
-    if (pos < row.c.length && row.c[pos] && row.c[pos].v) {
-      var v = String(row.c[pos].v).trim();
-      if (v.indexOf('http') === 0 && urls.indexOf(v) === -1) urls.push(v);
-    }
-  });
-  // Método 3: si una sola celda tiene varias URLs separadas por coma
+  // Si una celda tiene varias URLs separadas por coma
   if (urls.length === 1) {
     var parts = urls[0].split(',').map(function(u) { return u.trim(); }).filter(function(u) { return u.indexOf('http') === 0; });
     if (parts.length > 1) return parts;
