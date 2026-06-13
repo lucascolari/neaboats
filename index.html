@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-<link rel="preload" as="image" href="hero-vender.webp" type="image/webp" fetchpriority="high" />
-<link rel="preload" as="image" href="hero-comprar.webp" type="image/webp" />
+<link rel="preload" as="image" href="assetshero-vender.webp" type="image/webp" fetchpriority="high" />
+<link rel="preload" as="image" href="assetshero-comprar.webp" type="image/webp" />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" /></noscript>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" media="print" onload="this.media='all'" />
@@ -1030,8 +1030,8 @@ renderBoats = function(json) { _origRender(json); setTimeout(function(){ _pg=1; 
       el.src = src;
     }
   }
-  var _nbImgV = "hero-vender.webp";
-  var _nbImgC = "hero-comprar.webp";
+  var _nbImgV = "assetshero-vender.webp";
+  var _nbImgC = "assetshero-comprar.webp";
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       loadHeroImg('heroImgVender', _nbImgV);
