@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="theme-color" content="#0a192f" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Neaboats — Broker náutico especializado en el NEA</title>
+<meta name="description" content="Broker náutico especializado en el NEA. Más de 20 lanchas vendidas. Solo cobramos si vendemos." />
+<meta property="og:title" content="Neaboats — Broker náutico del NEA" />
+<meta property="og:description" content="Vendemos tu lancha como si fuera nuestra. Solo cobramos si vendemos." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231D9E75'/><text y='.9em' font-size='70' x='12'>⛵</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+<link rel="preload" as="image" href="assetshero-vender.webp" type="image/webp" fetchpriority="high" />
+<link rel="preload" as="image" href="assetshero-comprar.webp" type="image/webp" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" /></noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" /></noscript>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #1D9E75; --teal-dark: #0F6E56; --teal-deeper: #085041;
+    --teal-light: #E1F5EE; --teal-mid: #5DCAA5;
+    --navy: #0a192f; --navy-mid: #0d2a4a;
+    --text: #111827; --text-sec: #6B7280;
+    --border: rgba(0,0,0,0.09); --bg: #ffffff; --bg-soft: #f7f9fc;
+    --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 20px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1,h2,h3,h4 { font-family: 'Sora', sans-serif; }
+  nav { position: sticky; top: 0; z-index: 200; background: rgba(10,25,47,0.94); backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(255,255,255,0.07); height: 62px; display: flex; align-items: center; padding: 0 2.5rem; }
+  .nav-inner { max-width: 1140px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; }
+  .nav-links a { font-size: 14px; color: rgba(255,255,255,0.65); text-decoration: none; padding: 6px 14px; border-radius: 20px; transition: color 0.15s, background 0.15s; }
+  .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+  .nav-links a.active { background: var(--teal); color: #fff; }
+  .nav-phone { display: flex; align-items: center; gap: 7px; color: #fff; font-size: 14px; text-decoration: none; }
+  .nav-phone i { color: var(--teal-mid); font-size: 16px; }
+  .nav-hamburger { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+  .mobile-menu { display: none; position: fixed; inset: 62px 0 0 0; background: var(--navy); z-index: 199; flex-direction: column; padding: 2rem; gap: 1rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 18px; color: rgba(255,255,255,0.75); text-decoration: none; padding: 0.75rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+  .hero { min-height: calc(100vh - 62px); background: linear-gradient(140deg, #081929 0%, #0d2a4a 35%, #0a3d4f 65%, #083a30 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 55% at 50% 38%, rgba(29,158,117,0.14) 0%, transparent 65%), radial-gradient(ellipse 40% 30% at 20% 80%, rgba(8,80,65,0.2) 0%, transparent 60%); }
+  .hero-dots { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 40px 40px; }
+  .hero-content { position: relative; z-index: 1; width: 100%; max-width: 900px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(29,158,117,0.12); border: 0.5px solid rgba(29,158,117,0.35); color: var(--teal-mid); font-size: 13px; padding: 5px 16px; border-radius: 100px; margin-bottom: 2rem; animation: fadeDown 0.6s ease both; }
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 600; color: #fff; line-height: 1.12; margin-bottom: 0.65rem; animation: fadeUp 0.65s 0.1s ease both; }
+  .hero h1 .accent { color: var(--teal); }
+  .hero-sub { font-size: 17px; color: rgba(255,255,255,0.58); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.65; animation: fadeUp 0.65s 0.2s ease both; }
+  .hero-stats { display: flex; align-items: center; justify-content: center; gap: 2.5rem; margin-bottom: 2.5rem; animation: fadeUp 0.65s 0.25s ease both; }
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-family: 'Sora', sans-serif; font-size: 2.2rem; font-weight: 600; color: #fff; }
+  .hero-stat .num span { color: var(--teal); }
+  .hero-stat .lbl { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .hero-stat-div { width: 1px; height: 40px; background: rgba(255,255,255,0.12); }
+  .hero-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 780px; margin: 0 auto; animation: fadeUp 0.65s 0.3s ease both; }
+  .hero-card { background: rgba(255,255,255,0.055); border: 0.5px solid rgba(255,255,255,0.11); border-radius: var(--radius-xl); padding: 2rem 1.75rem; transition: background 0.2s, border-color 0.2s, transform 0.2s; cursor: pointer; text-align: left; }
+  .hero-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+  .hero-card-img { width: 100%; height: 160px; border-radius: 10px; object-fit: cover; margin-bottom: 1.25rem; opacity: 0.85; transition: opacity 0.2s; }
+  .hero-card:hover .hero-card-img { opacity: 1; }
+  .hero-card .hc-icon { font-size: 34px; color: var(--teal); margin-bottom: 1rem; }
+  .hero-card h3 { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 0.4rem; }
+  .hero-card p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.55; margin-bottom: 1.5rem; }
+  .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--teal); color: #fff; border: none; border-radius: var(--radius-md); padding: 11px 22px; font-size: 14px; font-weight: 500; cursor: pointer; width: 100%; transition: background 0.15s, transform 0.1s; font-family: 'DM Sans', sans-serif; }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #fff; border: 0.5px solid rgba(255,255,255,0.32); border-radius: var(--radius-md); padding: 11px 22px; font-size: 14px; font-weight: 500; cursor: pointer; width: 100%; transition: background 0.15s, border-color 0.15s; font-family: 'DM Sans', sans-serif; }
+  .btn-outline:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.52); }
+  .hero-scroll { margin-top: 3rem; color: rgba(255,255,255,0.25); font-size: 24px; animation: bob 2.2s ease-in-out infinite, fadeUp 0.65s 0.5s ease both; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+  .new-banner { background: linear-gradient(90deg, #FEF3C7, #FFF8E1); border: 0.5px solid #F59E0B; border-radius: var(--radius-md); padding: 12px 20px; display: flex; align-items: center; gap: 10px; margin-bottom: 2rem; font-size: 14px; }
+  .new-banner i { color: #D97706; font-size: 18px; flex-shrink: 0; }
+  .new-banner strong { color: #92400E; }
+  .new-banner span { color: #78350F; }
+  .section { padding: 5.5rem 2rem; }
+  .section-inner { max-width: 1140px; margin: 0 auto; }
+  .section-bg { background: var(--bg-soft); }
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+  .section-label { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); font-size: 11px; font-weight: 600; padding: 4px 13px; border-radius: 100px; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 1rem; }
+  .section-title { font-size: clamp(1.7rem, 3.2vw, 2.4rem); font-weight: 600; line-height: 1.2; margin-bottom: 0.6rem; }
+  .section-sub { font-size: 16px; color: var(--text-sec); max-width: 540px; margin: 0 auto; line-height: 1.65; }
+  .filter-bar { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .filter-btn { display: inline-flex; align-items: center; gap: 7px; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 8px 16px; font-size: 14px; color: var(--text-sec); cursor: pointer; transition: border-color 0.15s, color 0.15s; font-family: 'DM Sans', sans-serif; }
+  .filter-btn:hover, .filter-btn.active { border-color: var(--teal); color: var(--teal); }
+  .filters-panel { display: none; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
+  .filters-panel.open { display: block; }
+  .filters-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .filter-group label { font-size: 12px; color: var(--text-sec); font-weight: 500; display: block; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .filter-group select, .filter-group input { width: 100%; border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); outline: none; }
+  .filter-group select:focus, .filter-group input:focus { border-color: var(--teal); }
+  .filters-actions { display: flex; gap: 10px; margin-top: 1rem; }
+  .btn-filter-apply { background: var(--teal); color: #fff; border: none; border-radius: var(--radius-sm); padding: 9px 20px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-filter-clear { background: none; color: var(--text-sec); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 9px 20px; font-size: 14px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .boats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .boat-card { background: var(--bg); border-radius: var(--radius-lg); overflow: hidden; border: 0.5px solid var(--border); transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
+  .boat-card:hover { transform: translateY(-3px); border-color: rgba(0,0,0,0.16); }
+  .boat-card.hidden { display: none; }
+  .boat-img { height: 190px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .boat-img-1 { background: linear-gradient(135deg, #e0f2eb, #c9eadf); }
+  .boat-img-2 { background: linear-gradient(135deg, #ddeaf8, #c9ddf2); }
+  .boat-img-3 { background: linear-gradient(135deg, #f2ece0, #ede1c9); }
+  .boat-img i { font-size: 52px; opacity: 0.35; }
+  .boat-img-1 i { color: #1D9E75; }
+  .boat-img-2 i { color: #185FA5; }
+  .boat-img-3 i { color: #854F0B; }
+  .boat-location { position: absolute; top: 12px; right: 12px; background: var(--teal); color: #fff; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; }
+  .boat-badge-new { position: absolute; top: 12px; left: 12px; background: #F59E0B; color: #fff; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; }
+  .boat-info { padding: 1.1rem 1.25rem 1.25rem; }
+  .boat-name { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 0.75rem; }
+  .boat-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 10px; margin-bottom: 1rem; }
+  .boat-spec { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-sec); }
+  .boat-spec i { font-size: 14px; color: var(--teal); flex-shrink: 0; }
+  .boat-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 0.85rem; border-top: 0.5px solid var(--border); }
+  .boat-price { font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 600; color: var(--teal); }
+  .boat-footer-btns { display: flex; gap: 8px; }
+  .btn-detail { display: inline-flex; align-items: center; gap: 5px; background: none; color: var(--text-sec); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 7px 12px; font-size: 13px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: border-color 0.15s, color 0.15s; }
+  .btn-detail:hover { border-color: rgba(0,0,0,0.2); color: var(--text); }
+  .btn-consult { display: inline-flex; align-items: center; gap: 6px; background: var(--teal); color: #fff; border: none; border-radius: var(--radius-sm); padding: 8px 14px; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s; font-family: 'DM Sans', sans-serif; }
+  .btn-consult:hover { background: var(--teal-dark); }
+  .no-results { text-align: center; padding: 3rem; color: var(--text-sec); display: none; }
+  .no-results i { font-size: 40px; color: #d1d5db; margin-bottom: 1rem; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 999; display: none; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--bg); border-radius: var(--radius-xl); max-width: 680px; width: 100%; max-height: 90vh; overflow-y: auto; }
+  .modal-img { height: 260px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-xl) var(--radius-xl) 0 0; position: relative; overflow: hidden; }
+  .modal-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; background: rgba(0,0,0,0.35); border: none; border-radius: 50%; color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
+  .modal-body { padding: 1.75rem 2rem 2rem; }
+  .modal-title { font-size: 22px; font-weight: 600; margin-bottom: 0.25rem; }
+  .modal-price { font-size: 26px; font-weight: 600; color: var(--teal); margin-bottom: 1.25rem; }
+  .modal-specs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+  .modal-spec { background: var(--bg-soft); border-radius: var(--radius-md); padding: 12px; }
+  .modal-spec .ms-label { font-size: 12px; color: var(--text-sec); margin-bottom: 4px; }
+  .modal-spec .ms-val { font-size: 15px; font-weight: 600; }
+  .modal-desc { font-size: 14px; color: var(--text-sec); line-height: 1.65; margin-bottom: 1.5rem; }
+  .modal-actions { display: flex; gap: 10px; }
+  .btn-modal-wa { flex: 1; display: flex; align-items: center; justify-content: center; gap: 9px; background: #25D366; color: #fff; border: none; border-radius: var(--radius-md); padding: 13px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Sora', sans-serif; transition: background 0.15s; }
+  .btn-modal-wa:hover { background: #1da851; }
+  .btn-modal-call { flex: 1; display: flex; align-items: center; justify-content: center; gap: 9px; background: none; color: var(--text); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 13px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Sora', sans-serif; transition: border-color 0.15s; }
+  .btn-modal-call:hover { border-color: rgba(0,0,0,0.25); }
+  .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .benefit-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; transition: border-color 0.2s, transform 0.2s; display: flex; align-items: center; gap: 14px; }
+  .benefit-card:hover { border-color: rgba(0,0,0,0.15); transform: translateY(-2px); }
+  .benefit-icon { width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+  .benefit-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 0.2rem; }
+  .benefit-card p { font-size: 13px; color: var(--text-sec); line-height: 1.45; }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .step-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; transition: border-color 0.2s; }
+  .step-card:hover { border-color: rgba(0,0,0,0.15); }
+  .step-num { width: 30px; height: 30px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; margin-bottom: 1rem; }
+  .step-icon { width: 44px; height: 44px; background: var(--teal-light); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--teal); margin-bottom: 0.8rem; }
+  .step-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 0.35rem; }
+  .step-card p { font-size: 13px; color: var(--text-sec); line-height: 1.55; }
+  .table-container { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th, .compare-table td { padding: 14px 22px; text-align: center; font-size: 14px; border-bottom: 0.5px solid var(--border); white-space: nowrap; }
+  .compare-table th:first-child, .compare-table td:first-child { text-align: left; color: var(--text-sec); }
+  .compare-table thead th { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 14px; }
+  .th-nea { background: var(--teal); color: #fff !important; }
+  .compare-table tbody tr:last-child td { border-bottom: none; }
+  .compare-table tbody tr { transition: background 0.12s; }
+  .compare-table tbody tr:hover td { background: var(--bg-soft); }
+  .check { color: var(--teal); font-size: 19px; }
+  .cross { color: #E24B4A; font-size: 19px; }
+  .highlight-val { color: var(--teal); font-weight: 600; }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .testi-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.6rem; transition: border-color 0.2s, transform 0.2s; }
+  .testi-card:hover { border-color: rgba(0,0,0,0.15); transform: translateY(-2px); }
+  .testi-head { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+  .testi-avatar { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600; }
+  .av-teal { background: #E1F5EE; color: #0F6E56; }
+  .av-blue { background: #E6F1FB; color: #185FA5; }
+  .av-purple { background: #EEEDFE; color: #534AB7; }
+  .testi-name { font-size: 15px; font-weight: 600; }
+  .testi-loc { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+  .stars { color: #F59E0B; font-size: 15px; margin-bottom: 0.75rem; letter-spacing: 2px; }
+  .testi-card blockquote { font-size: 14px; color: var(--text-sec); line-height: 1.65; font-style: italic; }
+  .map-section { background: var(--navy); padding: 5rem 2rem; }
+  .map-inner { max-width: 1140px; margin: 0 auto; }
+  .map-header { text-align: center; margin-bottom: 2.5rem; }
+  .map-header .section-label { background: rgba(29,158,117,0.15); color: var(--teal-mid); }
+  .map-header h2 { color: #fff; font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 600; margin-bottom: 0.5rem; }
+  .map-header p { color: rgba(255,255,255,0.5); font-size: 15px; }
+  .map-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; align-items: start; }
+  .map-zones { display: flex; flex-direction: column; gap: 12px; }
+  .map-zone { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 14px 16px; transition: background 0.15s, border-color 0.15s; }
+  .map-zone:hover { background: rgba(255,255,255,0.09); border-color: rgba(29,158,117,0.4); }
+  .map-zone-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+  .map-zone-info strong { font-size: 14px; color: #fff; font-weight: 600; display: block; }
+  .map-zone-info span { font-size: 13px; color: rgba(255,255,255,0.45); }
+  .map-embed { border-radius: var(--radius-xl); overflow: hidden; border: 0.5px solid rgba(255,255,255,0.1); }
+  .map-embed iframe { display: block; width: 100%; height: 380px; border: none; filter: grayscale(0.2); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.45fr; gap: 3.5rem; align-items: start; }
+  .contact-left-title { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; margin-bottom: 0.5rem; }
+  .contact-left-sub { font-size: 15px; color: var(--text-sec); line-height: 1.65; margin-bottom: 2rem; }
+  .perks { display: flex; flex-direction: column; gap: 14px; margin-bottom: 2rem; }
+  .perk { display: flex; align-items: flex-start; gap: 12px; }
+  .perk-icon { width: 38px; height: 38px; border-radius: var(--radius-md); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .perk-icon.teal { background: var(--teal-light); color: var(--teal); }
+  .perk-icon.blue { background: #E6F1FB; color: #185FA5; }
+  .perk-icon.purple { background: #EEEDFE; color: #534AB7; }
+  .perk-text strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 2px; }
+  .perk-text span { font-size: 13px; color: var(--text-sec); }
+  .contact-info-box { background: var(--bg-soft); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; }
+  .contact-info-box h4 { font-size: 14px; font-weight: 600; margin-bottom: 0.75rem; }
+  .ci-row { display: flex; align-items: center; gap: 9px; font-size: 14px; color: var(--text-sec); margin-bottom: 8px; }
+  .ci-row:last-child { margin-bottom: 0; }
+  .ci-row i { font-size: 16px; color: var(--teal); flex-shrink: 0; }
+  .form-box { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-xl); padding: 2rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .fg { display: flex; flex-direction: column; gap: 5px; }
+  .fg.full { grid-column: 1/-1; }
+  .fg label { font-size: 13px; color: var(--text-sec); font-weight: 500; }
+  .fg input, .fg textarea, .fg select { border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; font-size: 14px; background: var(--bg); color: var(--text); outline: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.15s; }
+  .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--teal); }
+  .fg textarea { resize: vertical; min-height: 95px; }
+  .upload-zone { border: 1.5px dashed rgba(0,0,0,0.15); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; cursor: pointer; color: var(--text-sec); transition: border-color 0.15s, background 0.15s; }
+  .upload-zone:hover { border-color: var(--teal); background: var(--teal-light); }
+  .upload-zone i { font-size: 30px; color: var(--teal); margin-bottom: 8px; }
+  .upload-zone p { font-size: 13px; margin-bottom: 3px; }
+  .upload-zone small { font-size: 12px; opacity: 0.55; }
+  .upload-previews { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .upload-preview { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 0.5px solid var(--border); }
+  .btn-submit { width: 100%; padding: 13px; background: var(--teal); color: #fff; border: none; border-radius: var(--radius-md); font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 9px; transition: background 0.15s, transform 0.1s; }
+  .btn-submit:hover { background: var(--teal-dark); }
+  .btn-submit:active { transform: scale(0.99); }
+  .btn-submit:disabled { background: #9CA3AF; cursor: not-allowed; }
+  .form-success { display: none; text-align: center; padding: 2rem; }
+  .form-success i { font-size: 48px; color: var(--teal); margin-bottom: 1rem; }
+  .form-success h3 { font-size: 20px; font-weight: 600; margin-bottom: 0.5rem; }
+  .form-success p { font-size: 14px; color: var(--text-sec); }
+  .cta-band { background: linear-gradient(135deg, var(--teal-deeper), var(--teal), var(--teal-dark)); padding: 5rem 2rem; text-align: center; }
+  .cta-band h2 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); font-weight: 600; color: #fff; margin-bottom: 0.6rem; }
+  .cta-band p { font-size: 16px; color: rgba(255,255,255,0.72); margin-bottom: 2rem; }
+  .btn-wa { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--teal-dark); border: none; border-radius: var(--radius-lg); padding: 14px 30px; font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+  .btn-wa:hover { background: #f0faf5; transform: translateY(-1px); }
+  .btn-wa i { font-size: 22px; color: #25D366; }
+  footer { background: var(--navy); color: rgba(255,255,255,0.58); padding: 4rem 2rem 2rem; }
+  .footer-inner { max-width: 1140px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand-desc { font-size: 14px; line-height: 1.65; margin-top: 1rem; max-width: 300px; }
+  .footer-col h4 { font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 10px; transition: color 0.15s; }
+  .footer-col a:hover { color: #fff; }
+  .fc-row { display: flex; align-items: center; gap: 9px; font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+  .fc-row i { color: var(--teal); font-size: 16px; flex-shrink: 0; }
+  .footer-bottom { border-top: 0.5px solid rgba(255,255,255,0.08); padding-top: 1.5rem; text-align: center; font-size: 13px; color: rgba(255,255,255,0.25); }
+  .wa-float { position: fixed; bottom: 26px; right: 26px; z-index: 998; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 28px; color: #fff; text-decoration: none; box-shadow: 0 4px 24px rgba(37,211,102,0.38); transition: transform 0.2s, box-shadow 0.2s; }
+  .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(37,211,102,0.52); }
+  @media (max-width: 960px) {
+    .hero-cards, .boats-grid, .benefits-grid, .testi-grid, .contact-grid, .footer-grid, .map-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .filters-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-phone { display: none; }
+  }
+  @media (max-width: 600px) {
+    .compare-table th, .compare-table td { padding: 10px 14px; font-size: 12px; }
+    .compare-table th:first-child, .compare-table td:first-child { font-size: 12px; }
+  }
+  @media (max-width: 600px) {
+    .steps-grid, .hero-stats { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 1rem; }
+    .hero-stat-div { display: none; }
+    .form-grid { grid-template-columns: 1fr; }
+    .fg.full { grid-column: 1; }
+    .modal-specs-grid { grid-template-columns: 1fr 1fr; }
+    .modal-actions { flex-direction: column; }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+.nav-logo-img { height: 40px; width: auto; object-fit: contain; }
+.modal-gallery { position:relative;width:100%;height:300px;border-radius:20px 20px 0 0;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.modal-gallery-track { display:flex;height:100%;width:100%;transition:transform 0.35s cubic-bezier(.4,0,.2,1); }
+.modal-gallery-slide { flex:0 0 100%;width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;pointer-events:none; }
+.gallery-btn { position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;background:rgba(0,0,0,0.5);border:none;border-radius:50%;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.15s;padding:0;line-height:1; }
+.gallery-btn:hover { background:rgba(0,0,0,0.8); }
+.gallery-prev { left:12px; } .gallery-next { right:12px; }
+.gallery-dots { position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10; }
+.gallery-dot { width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.45);cursor:pointer;transition:background 0.2s,transform 0.2s; }
+.gallery-dot.on { background:#fff;transform:scale(1.25); }
+.gallery-counter { position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.5);color:#fff;font-size:11px;padding:3px 9px;border-radius:100px;z-index:10; }
+.modal-close-btn { position:absolute;top:12px;left:12px;width:32px;height:32px;background:rgba(0,0,0,0.45);border:none;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;transition:background 0.15s; }
+.modal-close-btn:hover { background:rgba(0,0,0,0.75); }
+.modal-location-badge { position:absolute;bottom:12px;left:12px;background:#1D9E75;color:#fff;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;z-index:10; }
+.foto-badge { position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);color:#fff;font-size:10px;padding:2px 8px;border-radius:100px;z-index:2;display:flex;align-items:center;gap:3px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+/* Aplaza el renderizado de secciones fuera de pantalla hasta que el usuario se acerca.
+   contain-intrinsic-size reserva el alto aproximado para que la barra de scroll no salte. */
+#benefits, .map-section, #testimonials, footer { content-visibility: auto; contain-intrinsic-size: auto 600px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 82" class="nav-logo-img" role="img" aria-label="Neaboats"><text x="0" y="56" font-family="'Arial Black','Arial Bold',Arial,sans-serif" font-weight="900" font-size="60" fill="#5DCAA5">NEA</text><text x="122" y="56" font-family="'Arial Black','Arial Bold',Arial,sans-serif" font-weight="900" font-size="60" fill="#777777">BOATS</text><text x="2" y="75" font-family="Arial,sans-serif" font-weight="300" font-size="13" letter-spacing="3.8" fill="#666666">BROKER NÁUTICO</text></svg>
+    </a>
+    <div class="nav-links">
+      <a href="#">Inicio</a>
+      <a href="#catalog" class="active">Lanchas en venta</a>
+      <a href="#benefits">Beneficios</a>
+      <a href="#testimonials">Testimonios</a>
+      <a href="#contact">Contacto</a>
+    </div>
+    <a href="https://www.instagram.com/nea.boats/" target="_blank" class="nav-phone" style="margin-right:1rem"><i class="ti ti-brand-instagram" style="color:#E1306C;font-size:20px"></i></a>
+    <a href="tel:+5493624662495" class="nav-phone"><i class="ti ti-phone"></i> +54 9 362 466 2495</a>
+    <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menú"><i class="ti ti-menu-2"></i></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="toggleMobile()">Inicio</a>
+  <a href="#catalog" onclick="toggleMobile()">Lanchas en venta</a>
+  <a href="#benefits" onclick="toggleMobile()">Beneficios</a>
+  <a href="#testimonials" onclick="toggleMobile()">Testimonios</a>
+  <a href="#contact" onclick="toggleMobile()">Contacto</a>
+  <a href="tel:+5493624662495"><i class="ti ti-phone"></i> +54 9 362 466 2495</a>
+</div>
+
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <h1>Tu lancha no se vende sola.<br><span class="accent">Nosotros la vendemos como si fuera nuestra.</span></h1>
+    <p class="hero-sub">Broker náutico especializado en el NEA. Más de 20 lanchas vendidas con atención personalizada y resultados garantizados.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num"><span id="stat1">0</span>+</div><div class="lbl">Lanchas vendidas</div></div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat"><div class="num"><span id="stat2">0</span></div><div class="lbl">Provincias activas</div></div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat"><div class="num"><span id="stat3">0</span>%</div><div class="lbl">Clientes satisfechos</div></div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat"><div class="num"><span id="stat4">0</span></div><div class="lbl">Años de experiencia</div></div>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card">
+        <img class="hero-card-img" id="heroImgVender" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="background:#0d2a4a;" alt="Vender lancha" width="501" height="389" decoding="async" fetchpriority="high" />
+        <h3>Quiero vender mi lancha</h3>
+        <p>Solo cobramos si vendemos. Fotos profesionales y atención incluida.</p>
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Empezar ahora <i class="ti ti-arrow-right"></i></button>
+      </div>
+      <div class="hero-card">
+        <img class="hero-card-img" id="heroImgComprar" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="background:#0d2a4a;" alt="Comprar lancha" width="489" height="248" decoding="async" />
+        <h3>Quiero comprar una lancha</h3>
+        <p>Encontrá la embarcación perfecta con nuestra asesoría especializada.</p>
+        <button class="btn-outline" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Ver catálogo <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+    <div class="hero-scroll"><i class="ti ti-chevron-down"></i></div>
+  </div>
+</section>
+
+<div class="section section-bg" id="catalog">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">¿Estás buscando una lancha? Estas son las disponibles hoy 👇</h2>
+      <p class="section-sub">Explorá nuestro inventario actualizado de embarcaciones disponibles</p>
+    </div>
+    <div class="new-banner" id="newBanner" style="display:none">
+      <i class="ti ti-bell-ringing"></i>
+      <div><strong>Nueva lancha publicada:</strong> <span id="newBannerText"></span></div>
+    </div>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn" id="filterToggle" onclick="toggleFilters()"><i class="ti ti-adjustments-horizontal"></i> Filtros</button>
+    <button class="filter-btn" data-sort="price-asc"  onclick="sortBoats(this,'price-asc')"><i class="ti ti-sort-ascending"></i> Menor precio</button>
+    <button class="filter-btn" data-sort="price-desc" onclick="sortBoats(this,'price-desc')"><i class="ti ti-sort-descending"></i> Mayor precio</button>
+    <button class="filter-btn" data-sort="year"       onclick="sortBoats(this,'year')"><i class="ti ti-calendar"></i> Más nuevo</button>
+  </div>
+  <div class="filters-panel" id="filtersPanel">
+    <div class="filters-grid">
+      <div class="filter-group"><label>Ubicación</label><select id="fLocation" onchange="applyFilters()"><option value="">Todas</option></select></div>
+      <div class="filter-group"><label>Precio máximo</label><select id="fPrice" onchange="applyFilters()"><option value="">Sin límite</option><option value="30000">Hasta $30.000</option><option value="50000">Hasta $50.000</option><option value="70000">Hasta $70.000</option></select></div>
+      <div class="filter-group"><label>Año mínimo</label><select id="fYear" onchange="applyFilters()"><option value="">Cualquiera</option><option value="2019">2019+</option><option value="2020">2020+</option><option value="2022">2022+</option></select></div>
+      <div class="filter-group"><label>Motor</label><select id="fMotor" onchange="applyFilters()"><option value="">Todos</option></select></div>
+    </div>
+    <div class="filters-actions">
+      <button class="btn-filter-apply" onclick="applyFilters()">Aplicar filtros</button>
+      <button class="btn-filter-clear" onclick="clearFilters()">Limpiar</button>
+    </div>
+  </div>
+  <div class="boats-grid" id="boatsGrid"></div>
+  <div class="no-results" id="noResults"><i class="ti ti-search-off"></i><p>No hay lanchas que coincidan con los filtros.</p></div>
+</div>
+
+<div class="section" id="benefits" style="padding-top:3.5rem;padding-bottom:3.5rem">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">¿Por qué vender con Neaboats?</h2>
+      <p class="section-sub">Somos el único broker náutico del NEA que combina experiencia local con servicio personalizado</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon" style="background:#E1F5EE"><i class="ti ti-heart" style="color:#1D9E75"></i></div><div><h3>Servicio personalizado</h3><p>Atención cercana, humana y profesional. Te acompañamos en cada paso.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon" style="background:#E1F5EE"><i class="ti ti-coin" style="color:#1D9E75"></i></div><div><h3>Solo cobramos si vendemos</h3><p>Sin costos iniciales. Nuestro éxito depende del tuyo.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon" style="background:#E6F1FB"><i class="ti ti-camera" style="color:#185FA5"></i></div><div><h3>Fotos, publicaciones y pruebas incluidas</h3><p>Sesión fotográfica profesional y publicación en todos los portales.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon" style="background:#EEEDFE"><i class="ti ti-trophy" style="color:#534AB7"></i></div><div><h3>Más de 20 lanchas vendidas en el NEA</h3><p>Experiencia comprobada en el mercado náutico regional.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon" style="background:#FAEEDA"><i class="ti ti-users" style="color:#854F0B"></i></div><div><h3>Atención cercana y profesional</h3><p>Conocemos el mercado local y tenemos la red de contactos necesaria.</p></div></div>
+      <div class="benefit-card"><div class="benefit-icon" style="background:#FAECE7"><i class="ti ti-map-pin" style="color:#993C1D"></i></div><div><h3>Presencia local en el NEA</h3><p>Estamos donde vos estás. Conocemos el mercado regional como nadie.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Proceso de venta simplificado</h2>
+      <p class="section-sub">En 6 pasos simples, tu lancha pasa de estar guardada a estar vendida</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><div class="step-icon"><i class="ti ti-message-circle"></i></div><h3>Recibimos info de tu lancha</h3><p>Nos contás los detalles de tu embarcación</p></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-icon"><i class="ti ti-camera"></i></div><h3>Hacemos fotos profesionales</h3><p>Sesión fotográfica incluida sin costo</p></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-icon"><i class="ti ti-world"></i></div><h3>Publicamos en portales y redes</h3><p>Máxima exposición en todos los canales</p></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-icon"><i class="ti ti-users"></i></div><h3>Coordinamos y mostramos</h3><p>Nos encargamos de todas las visitas</p></div>
+      <div class="step-card"><div class="step-num">5</div><div class="step-icon"><i class="ti ti-writing"></i></div><h3>Cierre del trato</h3><p>Acompañamos hasta la firma</p></div>
+      <div class="step-card"><div class="step-num">6</div><div class="step-icon"><i class="ti ti-coin"></i></div><h3>Vos cobrás</h3><p>Recibís tu dinero sin complicaciones</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">¿Por qué elegir Neaboats?</h2>
+      <p class="section-sub">Comparamos nuestro servicio con otras alternativas del mercado</p>
+    </div>
+    <div class="table-container"><div class="table-scroll">
+      <table class="compare-table">
+        <thead><tr><th style="text-align:left">Características</th><th class="th-nea">Neaboats</th><th>Vendedores informales</th><th>Concesionarios</th></tr></thead>
+        <tbody>
+          <tr><td>Comisión</td><td class="highlight-val">4%</td><td>Variable</td><td>Hasta 10%</td></tr>
+          <tr><td>Fotos profesionales</td><td><span style="color:#1D9E75;font-size:20px;font-weight:700">✓</span></td><td><span style="color:#E24B4A;font-size:20px;font-weight:700">✗</span></td><td><span style="color:#1D9E75;font-size:20px;font-weight:700">✓</span></td></tr>
+          <tr><td>Atención personalizada</td><td><span style="color:#1D9E75;font-size:20px;font-weight:700">✓</span></td><td><span style="color:#E24B4A;font-size:20px;font-weight:700">✗</span></td><td><span style="color:#E24B4A;font-size:20px;font-weight:700">✗</span></td></tr>
+          <tr><td>Conocimiento local NEA</td><td><span style="color:#1D9E75;font-size:20px;font-weight:700">✓</span></td><td><span style="color:#1D9E75;font-size:20px;font-weight:700">✓</span></td><td><span style="color:#E24B4A;font-size:20px;font-weight:700">✗</span></td></tr>
+          <tr><td>Flexibilidad</td><td><span style="color:#1D9E75;font-size:20px;font-weight:700">✓</span></td><td><span style="color:#1D9E75;font-size:20px;font-weight:700">✓</span></td><td><span style="color:#E24B4A;font-size:20px;font-weight:700">✗</span></td></tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+<div class="section section-bg" id="testimonials">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Ellos ya confiaron en nosotros</h2>
+      <p class="section-sub">Testimonios reales de clientes satisfechos en el NEA</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-head"><div class="testi-avatar av-teal">CM</div><div><div class="testi-name">Carlos Mendoza</div><div class="testi-loc">Resistencia, Chaco</div></div></div><div class="stars">★★★★★</div><blockquote>"Vendí mi lancha en 3 semanas. El servicio fue impecable, desde las fotos hasta el cierre. Muy recomendable."</blockquote></div>
+      <div class="testi-card"><div class="testi-head"><div class="testi-avatar av-blue">MG</div><div><div class="testi-name">María González</div><div class="testi-loc">Corrientes Capital</div></div></div><div class="stars">★★★★★</div><blockquote>"Mateo me ayudó a encontrar la lancha perfecta para mi familia. Proceso transparente y sin sorpresas."</blockquote></div>
+      <div class="testi-card"><div class="testi-head"><div class="testi-avatar av-purple">RS</div><div><div class="testi-name">Roberto Silva</div><div class="testi-loc">Formosa</div></div></div><div class="stars">★★★★★</div><blockquote>"Excelente atención. Solo cobran si venden, eso me dio mucha confianza desde el primer momento."</blockquote></div>
+    </div>
+  </div>
+</div>
+
+<div class="map-section">
+  <div class="map-inner">
+    <div class="map-header"><h2>Zona de cobertura NEA</h2><p>Operamos en 4 provincias del noreste argentino</p></div>
+    <div class="map-grid">
+      <div class="map-zones">
+        <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Chaco</strong><span>Resistencia y Gran Chaco</span></div></div>
+        <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Corrientes</strong><span>Capital, Goya, Curuzú Cuatiá</span></div></div>
+        <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Formosa</strong><span>Capital y zona costera</span></div></div>
+        <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Misiones</strong><span>Posadas y costa del Paraná</span></div></div>
+      </div>
+      <div class="map-embed"><iframe id="mapIframe" src="about:blank" data-src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1500000!2d-59.5!3d-27.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label" style="margin-bottom:1rem"><i class="ti ti-send"></i> Contacto</div>
+        <h2 class="contact-left-title">Contanos de tu lancha y la vendemos juntos</h2>
+        <p class="contact-left-sub">Completá el formulario y en breve nos contactamos para comenzar el proceso de venta</p>
+        <h3 style="font-size:13px;font-weight:600;color:var(--text-sec);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem">¿Por qué elegirnos?</h3>
+        <div class="perks">
+          <div class="perk"><div class="perk-icon teal"><i class="ti ti-coin"></i></div><div class="perk-text"><strong>Solo cobramos si vendemos</strong><span>Sin costos iniciales ni sorpresas</span></div></div>
+          <div class="perk"><div class="perk-icon blue"><i class="ti ti-camera"></i></div><div class="perk-text"><strong>Fotos profesionales incluidas</strong><span>Sesión fotográfica sin costo adicional</span></div></div>
+          <div class="perk"><div class="perk-icon purple"><i class="ti ti-trophy"></i></div><div class="perk-text"><strong>Más de 20 lanchas vendidas</strong><span>Experiencia comprobada en el NEA</span></div></div>
+        </div>
+        <div class="contact-info-box">
+          <h4>Contacto directo</h4>
+          <div class="ci-row"><i class="ti ti-phone"></i> +54 9 362 466 2495</div>
+          <div class="ci-row"><i class="ti ti-mail"></i> mateo@neaboats.com</div>
+          <div class="ci-row"><i class="ti ti-map-pin"></i> Resistencia, Chaco – NEA</div>
+        </div>
+      </div>
+      <div class="form-box">
+        <div id="formContent">
+          <div class="form-grid">
+            <div class="fg"><label>Nombre completo *</label><input type="text" id="fNombre" placeholder="Tu nombre completo" /></div>
+            <div class="fg"><label>Teléfono / WhatsApp *</label><input type="tel" id="fTel" placeholder="+54 9 362 466 2495" /></div>
+            <div class="fg full"><label>Email</label><input type="email" id="fEmail" placeholder="tu@email.com" /></div>
+            <div class="fg full"><label>Ciudad / Provincia *</label><input type="text" id="fCiudad" placeholder="Ej: Resistencia, Chaco" /></div>
+            <div class="fg"><label>Marca</label><input type="text" id="fMarca" placeholder="Ej: Quicksilver" /></div>
+            <div class="fg"><label>Modelo</label><input type="text" id="fModelo" placeholder="Ej: 455 Open" /></div>
+            <div class="fg"><label>Año</label><input type="text" id="fAnio" placeholder="Ej: 2019" /></div>
+            <div class="fg"><label>Precio estimado</label><input type="text" id="fPrecio" placeholder="Ej: $30.000" /></div>
+            <div class="fg full">
+              <label>Fotos (opcional)</label>
+              <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                <i class="ti ti-upload"></i><p>Arrastrá las fotos aquí o hacé clic para seleccionar</p><small>JPG, PNG hasta 10MB cada una</small>
+                <input id="fileInput" type="file" multiple accept="image/*" style="display:none" onchange="previewImages(this)" />
+              </div>
+              <div class="upload-previews" id="uploadPreviews"></div>
+            </div>
+            <div class="fg full"><label>Comentarios adicionales</label><textarea id="fComentarios" placeholder="Contanos más detalles sobre tu lancha: estado, accesorios, motivo de venta, etc."></textarea></div>
+            <div class="fg full"><button class="btn-submit" id="submitBtn" onclick="submitForm()">Contactame ahora <i class="ti ti-arrow-right"></i></button></div>
+          </div>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <i class="ti ti-circle-check"></i><h3>¡Mensaje enviado!</h3>
+          <p>Mateo va a contactarte en menos de 24 horas para comenzar el proceso de venta.</p>
+          <div style="margin-top:1.5rem">
+            <button class="btn-consult" style="width:100%;justify-content:center;padding:12px;font-size:14px" onclick="openWA('Hola Mateo, acabo de completar el formulario en tu web. Quedo a disposición.')">
+              <i class="ti ti-brand-whatsapp"></i> También podés escribirme por WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>¿Querés vender tu lancha sin estrés?</h2>
+  <p>Empecemos hoy. Solo cobramos si vendemos.</p>
+  <button class="btn-wa" onclick="openWA('Hola Mateo, quiero vender mi lancha. ¿Me podés dar más información?')">
+    <i class="ti ti-brand-whatsapp"></i> Empezar por WhatsApp
+  </button>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="margin-bottom:1rem"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 82" style="height:36px;width:auto" role="img" aria-label="Neaboats"><text x="0" y="56" font-family="'Arial Black','Arial Bold',Arial,sans-serif" font-weight="900" font-size="60" fill="#5DCAA5">NEA</text><text x="122" y="56" font-family="'Arial Black','Arial Bold',Arial,sans-serif" font-weight="900" font-size="60" fill="#777777">BOATS</text><text x="2" y="75" font-family="Arial,sans-serif" font-weight="300" font-size="13" letter-spacing="3.8" fill="#666666">BROKER NÁUTICO</text></svg></div>
+        <p class="footer-brand-desc">Broker náutico especializado en el NEA. Conectamos compradores y vendedores con transparencia y experiencia local.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces rápidos</h4>
+        <a href="#">Inicio</a><a href="#catalog">Lanchas en venta</a>
+        <a href="#benefits">Beneficios</a><a href="#testimonials">Testimonios</a><a href="#contact">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="fc-row"><i class="ti ti-user"></i> Mateo Morales Martegani</div>
+        <div class="fc-row"><i class="ti ti-phone"></i> +54 9 362 466 2495</div>
+        <div class="fc-row"><i class="ti ti-mail"></i> mateo@neaboats.com</div>
+        <div class="fc-row"><i class="ti ti-map-pin"></i> Resistencia, Chaco – NEA</div>
+        <div class="fc-row"><i class="ti ti-brand-instagram" style="color:#E1306C"></i> <a href="https://www.instagram.com/nea.boats/" target="_blank" style="color:rgba(255,255,255,0.5);text-decoration:none">@nea.boats</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Neaboats. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<a href="https://www.instagram.com/nea.boats/" target="_blank" class="wa-float" title="Instagram" style="bottom:90px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)"><i class="ti ti-brand-instagram"></i></a>
+<a href="https://wa.me/5493624662495?text=Hola%20Mateo%2C%20vi%20tu%20web%20y%20me%20interesa%20saber%20m%C3%A1s." target="_blank" class="wa-float"><i class="ti ti-brand-whatsapp"></i></a>
+
+<div class="modal-overlay" id="boatModal" onclick="closeModalIfOverlay(event)">
+  <div class="modal">
+    <div class="modal-gallery" id="modalGallery">
+      <button class="modal-close-btn" onclick="closeModal()"><i class="ti ti-x"></i></button>
+      <div class="modal-gallery-track" id="galleryTrack"></div>
+      <button class="gallery-btn gallery-prev" id="galleryPrev" onclick="galleryMove(-1)" style="display:none">&#8249;</button>
+      <button class="gallery-btn gallery-next" id="galleryNext" onclick="galleryMove(1)"  style="display:none">&#8250;</button>
+      <div class="gallery-dots" id="galleryDots"></div>
+      <div class="gallery-counter" id="galleryCounter" style="display:none"></div>
+      <span class="modal-location-badge" id="modalLocation"></span>
+    </div>
+    <div class="modal-body">
+      <h2 class="modal-title" id="modalName"></h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-specs-grid">
+        <div class="modal-spec"><div class="ms-label">Año</div><div class="ms-val" id="modalYear"></div></div>
+        <div class="modal-spec"><div class="ms-label">Horas de uso</div><div class="ms-val" id="modalHoras"></div></div>
+        <div class="modal-spec"><div class="ms-label">Motor</div><div class="ms-val" id="modalMotor"></div></div>
+        <div class="modal-spec"><div class="ms-label">Eslora</div><div class="ms-val" id="modalEslora"></div></div>
+        <div class="modal-spec"><div class="ms-label">Ubicación</div><div class="ms-val" id="modalLoc2"></div></div>
+        <div class="modal-spec"><div class="ms-label">Estado</div><div class="ms-val" style="color:var(--teal)">Excelente</div></div>
+      </div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-actions">
+        <button class="btn-modal-wa" id="modalWABtn"><i class="ti ti-brand-whatsapp"></i> Consultar por WhatsApp</button>
+        <button class="btn-modal-call" onclick="window.location.href='tel:+5493624662495'"><i class="ti ti-phone"></i> Llamar ahora</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+const SHEET_ID   = '1YC_F0OwT9fBUDpUhhY1yt-T06A3hyysg_QyU085zljE';
+const SHEET_NAME = 'LANCHAS';
+const WA_NUMBER  = '5493624662495';
+
+// Columnas de fotos — lee FOTO, FOTO2 ... FOTO6 por nombre de columna
+const FOTO_COLS = ['foto','foto2','foto3','foto4','foto5','foto6',
+                   'photo','photo2','photo3','photo4','photo5','photo6',
+                   'imagen','imagen2','imagen3','imagen4','imagen5','imagen6'];
+
+const COLORS  = ['linear-gradient(135deg,#e0f2eb,#c9eadf)','linear-gradient(135deg,#ddeaf8,#c9ddf2)','linear-gradient(135deg,#f2ece0,#ede1c9)','linear-gradient(135deg,#f0e8f2,#e2d0e8)','linear-gradient(135deg,#f2f0e0,#ede6c9)'];
+const ICOLORS = ['#1D9E75','#185FA5','#854F0B','#534AB7','#0F6E56'];
+
+let gCur = 0, gTot = 0;
+
+function buildGallery(fotos) {
+  const track = document.getElementById('galleryTrack'),
+        dots   = document.getElementById('galleryDots'),
+        prev   = document.getElementById('galleryPrev'),
+        next   = document.getElementById('galleryNext'),
+        ctr    = document.getElementById('galleryCounter');
+  track.innerHTML = ''; dots.innerHTML = ''; gCur = 0; gTot = fotos.length;
+  if (!fotos.length) {
+    track.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%"><i class="ti ti-sailboat" style="font-size:64px;opacity:0.18;color:#1D9E75"></i></div>';
+    prev.style.display = next.style.display = ctr.style.display = 'none'; return;
+  }
+  fotos.forEach((url, i) => {
+    const img = document.createElement('img');
+    img.src = url; img.className = 'modal-gallery-slide'; img.alt = 'Foto ' + (i+1); img.loading = 'lazy'; img.decoding = 'async';
+    img.onerror = function() { this.style.opacity = '0'; };
+    track.appendChild(img);
+    if (fotos.length > 1) {
+      const d = document.createElement('div');
+      d.className = 'gallery-dot' + (i === 0 ? ' on' : '');
+      d.onclick = () => gTo(i);
+      dots.appendChild(d);
+    }
+  });
+  prev.style.display = next.style.display = fotos.length > 1 ? 'flex' : 'none';
+  ctr.style.display  = fotos.length > 1 ? 'block' : 'none';
+  gTo(0);
+}
+
+function gTo(i) {
+  if (i < 0) i = gTot - 1; if (i >= gTot) i = 0; gCur = i;
+  var track = document.getElementById('galleryTrack');
+  // Usar ancho real del contenedor en pixels para evitar bugs en mobile
+  var w = document.getElementById('modalGallery').offsetWidth;
+  track.style.transform = 'translateX(' + (-i * w) + 'px)';
+  document.querySelectorAll('.gallery-dot').forEach((d, j) => d.classList.toggle('on', j === i));
+  document.getElementById('galleryCounter').textContent = (i + 1) + ' / ' + gTot;
+}
+function galleryMove(d) { gTo(gCur + d); }
+
+(function() {
+  var sx = 0, sy = 0, dragging = false;
+  var el = document.getElementById('modalGallery');
+  el.addEventListener('touchstart', function(e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+    dragging = false;
+  }, {passive:true});
+  el.addEventListener('touchmove', function(e) {
+    var dx = Math.abs(e.touches[0].clientX - sx);
+    var dy = Math.abs(e.touches[0].clientY - sy);
+    if (dx > dy) dragging = true; // swipe horizontal
+  }, {passive:true});
+  el.addEventListener('touchend', function(e) {
+    if (!dragging) return;
+    var diff = sx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 30) galleryMove(diff > 0 ? 1 : -1);
+    dragging = false;
+  }, {passive:true});
+})();
+
+async function loadBoatsFromSheets() {
+  var grid = document.getElementById('boatsGrid');
+  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-sec)"><i class="ti ti-loader" style="font-size:28px;animation:spin 1s linear infinite"></i></div>';
+
+  // Cache sessionStorage 5 minutos
+  var CACHE_KEY = 'nb_boats_cache';
+  var CACHE_TTL = 5 * 60 * 1000;
+  try {
+    var cached = sessionStorage.getItem(CACHE_KEY);
+    if (cached) {
+      var parsed = JSON.parse(cached);
+      if (Date.now() - parsed.ts < CACHE_TTL) {
+        renderBoats(parsed.data);
+        return;
+      }
+    }
+  } catch(ex) {}
+
+  var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
+  var json;
+  try {
+    var r = await fetch(url); var t = await r.text();
+    json = JSON.parse(t.slice(t.indexOf('(') + 1, t.lastIndexOf(')')));
+  } catch(e) {
+    try {
+      json = await new Promise(function(ok, fail) {
+        window._gsCb = ok;
+        var s = document.createElement('script');
+        s.src = url + '&cb=_gsCb';
+        s.onerror = function() { fail(new Error('JSONP error')); };
+        document.head.appendChild(s);
+        setTimeout(function() { fail(new Error('Timeout')); }, 8000);
+      });
+    } catch(e2) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--text-sec)"><i class="ti ti-alert-circle" style="font-size:36px;color:#E24B4A;display:block;margin-bottom:10px"></i><p style="font-weight:600;margin-bottom:6px">No se pudieron cargar las lanchas</p><p style="font-size:13px;opacity:0.6">Abrí el sitio desde GitHub Pages, no desde tu PC.</p></div>';
+      return;
+    }
+  }
+  // Guardar en cache
+  try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ts: Date.now(), data: json})); } catch(ex) {}
+  renderBoats(json);
+}
+
+function parseFotos(row, cols) {
+  var urls = [];
+  // Buscar foto, foto2 ... foto6 por nombre de columna
+  // IMPORTANTE: no verificar row.c.length porque gviz trunca celdas vacías al final
+  // En su lugar, acceder con row.c[i] que devuelve undefined si no existe (safe)
+  FOTO_COLS.forEach(function(k) {
+    var i = cols.indexOf(k);
+    var cell = i >= 0 ? (row.c[i] || null) : null;
+    if (cell && cell.v) {
+      var v = String(cell.v).trim();
+      if (v.indexOf('http') === 0 && urls.indexOf(v) === -1) urls.push(v);
+    }
+  });
+  // Si una celda tiene varias URLs separadas por coma
+  if (urls.length === 1) {
+    var parts = urls[0].split(',').map(function(u) { return u.trim(); }).filter(function(u) { return u.indexOf('http') === 0; });
+    if (parts.length > 1) return parts;
+  }
+  return urls;
+}
+
+function renderBoats(json) {
+  var grid = document.getElementById('boatsGrid');
+  var rows = json.table.rows;
+  // Leer nombres de columnas en minúscula
+  var cols = json.table.cols.map(function(c) { return (c.label || '').toLowerCase().trim(); });
+
+  if (!rows || rows.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-sec)">No hay lanchas disponibles.</div>';
+    return;
+  }
+
+  grid.innerHTML = '';
+  var newest = null;
+  var _frag = document.createDocumentFragment();
+
+  rows.forEach(function(row, i) {
+    function get() {
+      var names = Array.prototype.slice.call(arguments);
+      for (var n = 0; n < names.length; n++) {
+        var idx = cols.indexOf(names[n].toLowerCase());
+        if (idx >= 0 && row.c[idx] && row.c[idx].v != null) return String(row.c[idx].v).trim();
+      }
+      return '';
+    }
+
+    var nombre    = get('modelo','nombre','name');
+    var precio    = get('precio','price');
+    var anio      = get('año','anio','year');
+    var horas     = get('horas','hours');
+    var motor     = get('motor','engine');
+    var eslora    = get('eslora','length');
+    var ubicacion = get('ubicacion','ubicación','location','ciudad');
+    var desc      = get('descripcion','descripción','description','detalle');
+    var nuevo     = get('nuevo','new').toLowerCase() === 'si';
+    var precioNum = parseInt(String(precio).replace(/[^0-9]/g, '')) || 0;
+
+    if (!nombre) return;
+
+    var fotos = parseFotos(row, cols);
+    var pf    = fotos[0] || '';
+
+    if (nuevo && !newest) newest = nombre + ' · ' + ubicacion + ' · $' + precioNum.toLocaleString('es-AR');
+
+    var ci = i % COLORS.length;
+    var imgH = pf
+      ? '<img src="' + pf + '" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">'
+      : '<i class="ti ti-sailboat" style="font-size:52px;opacity:0.35;color:' + ICOLORS[ci] + '"></i>';
+    var badge = fotos.length > 1
+      ? '<span class="foto-badge"><i class="ti ti-camera" style="font-size:11px"></i> ' + fotos.length + ' fotos</span>'
+      : '';
+
+    var card = document.createElement('div');
+    card.className = 'boat-card';
+    card.dataset.location = ubicacion;
+    card.dataset.price    = precioNum;
+    card.dataset.year     = anio;
+    card.dataset.motor    = motor;
+    card.dataset.name     = nombre;
+    card.dataset.eslora   = eslora;
+    card.dataset.horas    = horas;
+    card.dataset.desc     = desc;
+    card.dataset.fotos    = JSON.stringify(fotos);
+    card.style.cssText    = 'opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .2s';
+
+    card.innerHTML =
+      '<div class="boat-img" style="background:' + COLORS[ci] + '" onclick="openModal(this.closest(\'.boat-card\'))">' +
+        imgH +
+        (ubicacion ? '<span class="boat-location">' + ubicacion + '</span>' : '') +
+        (nuevo     ? '<span class="boat-badge-new">Nuevo</span>' : '') +
+        badge +
+      '</div>' +
+      '<div class="boat-info">' +
+        '<div class="boat-name">' + nombre + '</div>' +
+        '<div class="boat-specs">' +
+          (anio   ? '<div class="boat-spec"><i class="ti ti-calendar"></i> Año: '    + anio   + '</div>' : '') +
+          (horas  ? '<div class="boat-spec"><i class="ti ti-clock"></i> Horas: '     + horas  + '</div>' : '') +
+          (motor  ? '<div class="boat-spec"><i class="ti ti-engine"></i> Motor: '    + motor  + '</div>' : '') +
+          (eslora ? '<div class="boat-spec"><i class="ti ti-ruler"></i> Eslora: '    + eslora + '</div>' : '') +
+        '</div>' +
+        '<div class="boat-footer">' +
+          '<span class="boat-price">$' + precioNum.toLocaleString('es-AR') + '</span>' +
+          '<div class="boat-footer-btns">' +
+            '<button class="btn-detail" onclick="openModal(this.closest(\'.boat-card\'))"><i class="ti ti-eye"></i> Ver</button>' +
+            '<button class="btn-consult" onclick="consultarWA(\'' + nombre.replace(/'/g, "\\'") + '\',\'$' + precioNum.toLocaleString('es-AR') + '\')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    _frag.appendChild(card);
+    revealObserver.observe(card);
+  });
+  grid.appendChild(_frag);
+
+  if (newest) {
+    document.getElementById('newBannerText').textContent = newest;
+    document.getElementById('newBanner').style.display = 'flex';
+  }
+  populateFilters(rows, cols);
+}
+
+function populateFilters(rows, cols) {
+  var li = cols.findIndex(function(c) { return c === 'ubicacion' || c === 'ubicación' || c === 'location'; });
+  var mi = cols.findIndex(function(c) { return c === 'motor'; });
+  var locs = [...new Set(rows.map(function(r) { return r.c[li] && r.c[li].v ? r.c[li].v : null; }).filter(Boolean))];
+  var mots = [...new Set(rows.map(function(r) { return r.c[mi] && r.c[mi].v ? r.c[mi].v : null; }).filter(Boolean))];
+  var fL = document.getElementById('fLocation'), fM = document.getElementById('fMotor');
+  locs.forEach(function(l) { var o = document.createElement('option'); o.value = l; o.textContent = l; fL.appendChild(o); });
+  mots.forEach(function(m) { var o = document.createElement('option'); o.value = m; o.textContent = m; fM.appendChild(o); });
+}
+
+loadBoatsFromSheets();
+
+function openModal(card) {
+  var d     = card.dataset;
+  var fotos = JSON.parse(d.fotos || '[]');
+  document.getElementById('modalLocation').textContent = d.location;
+  document.getElementById('modalName').textContent     = d.name;
+  document.getElementById('modalPrice').textContent    = '$' + parseInt(d.price).toLocaleString('es-AR');
+  document.getElementById('modalYear').textContent     = d.year  || '—';
+  document.getElementById('modalHoras').textContent    = d.horas ? d.horas + ' hs' : '—';
+  document.getElementById('modalMotor').textContent    = d.motor  || '—';
+  document.getElementById('modalEslora').textContent   = d.eslora || '—';
+  document.getElementById('modalLoc2').textContent     = d.location;
+  document.getElementById('modalDesc').textContent     = d.desc;
+  document.getElementById('modalWABtn').onclick = function() { consultarWA(d.name, '$' + parseInt(d.price).toLocaleString('es-AR')); };
+  buildGallery(fotos);
+  document.getElementById('boatModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() { document.getElementById('boatModal').classList.remove('open'); document.body.style.overflow = ''; }
+function closeModalIfOverlay(e) { if (e.target === document.getElementById('boatModal')) closeModal(); }
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape')     closeModal();
+  if (e.key === 'ArrowLeft')  galleryMove(-1);
+  if (e.key === 'ArrowRight') galleryMove(1);
+});
+
+function openWA(msg) { window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank'); }
+function consultarWA(n, p) { openWA('Hola Mateo, vi la ' + n + ' (' + p + ') en tu web y me gustaría recibir más información.'); }
+function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+function animateCount(el, target, dur) {
+  var v = 0, s = target / (dur / 16);
+  var t = setInterval(function() { v += s; if (v >= target) { el.textContent = target; clearInterval(t); } else el.textContent = Math.floor(v); }, 16);
+}
+var sObs = new IntersectionObserver(function(es) {
+  es.forEach(function(e) {
+    if (e.isIntersecting) {
+      animateCount(document.getElementById('stat1'), 20, 1200);
+      animateCount(document.getElementById('stat2'), 4, 900);
+      animateCount(document.getElementById('stat3'), 98, 1500);
+      animateCount(document.getElementById('stat4'), 5, 1000);
+      sObs.disconnect();
+    }
+  });
+}, {threshold: 0.3});
+sObs.observe(document.querySelector('.hero-stats'));
+
+function toggleFilters() { document.getElementById('filtersPanel').classList.toggle('open'); document.getElementById('filterToggle').classList.toggle('active'); }
+function applyFilters() {
+  var loc = document.getElementById('fLocation').value, price = document.getElementById('fPrice').value,
+      year = document.getElementById('fYear').value,   motor = document.getElementById('fMotor').value;
+  var v = 0;
+  document.querySelectorAll('.boat-card').forEach(function(c) {
+    var ok = (!loc   || c.dataset.location === loc)
+          && (!price || parseInt(c.dataset.price) <= parseInt(price))
+          && (!year  || parseInt(c.dataset.year)  >= parseInt(year))
+          && (!motor || c.dataset.motor === motor);
+    c.classList.toggle('hidden', !ok); if (ok) v++;
+  });
+  document.getElementById('noResults').style.display = v === 0 ? 'block' : 'none';
+}
+function clearFilters() {
+  ['fLocation','fPrice','fYear','fMotor'].forEach(function(id) { document.getElementById(id).value = ''; });
+  document.querySelectorAll('.boat-card').forEach(function(c) { c.classList.remove('hidden'); });
+  document.getElementById('noResults').style.display = 'none';
+}
+function sortBoats(btn, type) {
+  document.querySelectorAll('[data-sort]').forEach(function(b) { b.classList.remove('active'); }); btn.classList.add('active');
+  var g = document.getElementById('boatsGrid');
+  Array.from(g.querySelectorAll('.boat-card'))
+    .sort(function(a, b) { return type === 'price-asc' ? a.dataset.price - b.dataset.price : type === 'price-desc' ? b.dataset.price - a.dataset.price : b.dataset.year - a.dataset.year; })
+    .forEach(function(c) { g.appendChild(c); });
+}
+function previewImages(input) {
+  var c = document.getElementById('uploadPreviews'); c.innerHTML = '';
+  Array.from(input.files).forEach(function(f) {
+    var r = new FileReader(); r.onload = function(e) { var img = document.createElement('img'); img.src = e.target.result; img.className = 'upload-preview'; c.appendChild(img); }; r.readAsDataURL(f);
+  });
+}
+function submitForm() {
+  var nombre = document.getElementById('fNombre').value.trim(),
+      tel    = document.getElementById('fTel').value.trim(),
+      ciudad = document.getElementById('fCiudad').value.trim();
+  if (!nombre || !tel || !ciudad) { alert('Por favor completá los campos obligatorios: nombre, teléfono y ciudad.'); return; }
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader" style="animation:spin 1s linear infinite"></i> Enviando...';
+  fetch('https://formspree.io/f/mwvjvbzw', {
+    method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({nombre: nombre, tel: tel, email: document.getElementById('fEmail').value,
+      ciudad: ciudad, marca: document.getElementById('fMarca').value, modelo: document.getElementById('fModelo').value,
+      anio: document.getElementById('fAnio').value, precio: document.getElementById('fPrecio').value,
+      comentarios: document.getElementById('fComentarios').value})
+  })
+  .then(function() { document.getElementById('formContent').style.display = 'none'; document.getElementById('formSuccess').style.display = 'block'; })
+  .catch(function() {
+    openWA('Hola Mateo, quiero vender mi lancha!\nNombre: ' + nombre + '\nTeléfono: ' + tel + '\nCiudad: ' + ciudad);
+    document.getElementById('formContent').style.display = 'none'; document.getElementById('formSuccess').style.display = 'block';
+  });
+}
+var revealObserver = new IntersectionObserver(function(es) {
+  es.forEach(function(e) { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+}, {threshold: 0.1});
+document.querySelectorAll('.benefit-card,.step-card,.testi-card').forEach(function(el) {
+  el.style.cssText = 'opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .2s';
+  revealObserver.observe(el);
+});
+
+
+// ── PAGINACIÓN ────────────────────────────────────────────────────
+var _pg = 1, _pgSize = 9;
+function _renderPage() {
+  var cards = Array.from(document.querySelectorAll('#boatsGrid .boat-card:not(.hidden)'));
+  cards.forEach(function(c, i) {
+    c.style.display = (i >= (_pg-1)*_pgSize && i < _pg*_pgSize) ? '' : 'none';
+  });
+  var total = cards.length, pages = Math.ceil(total/_pgSize);
+  var el = document.getElementById('pgControls');
+  if (!el) { el = document.createElement('div'); el.id = 'pgControls'; el.style.cssText = 'grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:1.5rem;flex-wrap:wrap'; document.getElementById('boatsGrid').after(el); }
+  el.innerHTML = '';
+  if (pages <= 1) return;
+  var makeBtn = function(label, page, active) {
+    var b = document.createElement('button');
+    b.textContent = label;
+    b.style.cssText = 'border:0.5px solid ' + (active?'var(--teal)':'var(--border)') + ';background:' + (active?'var(--teal)':'var(--bg)') + ';color:' + (active?'#fff':'var(--text-sec)') + ';border-radius:var(--radius-sm);padding:7px 14px;font-size:14px;cursor:pointer;font-family:inherit;transition:all .15s';
+    b.onclick = function() { _pg = page; _renderPage(); document.getElementById('catalog').scrollIntoView({behavior:'smooth'}); };
+    return b;
+  };
+  if (_pg > 1) el.appendChild(makeBtn('‹', _pg-1, false));
+  for (var i=1; i<=pages; i++) el.appendChild(makeBtn(String(i), i, i===_pg));
+  if (_pg < pages) el.appendChild(makeBtn('›', _pg+1, false));
+}
+
+// Parchear applyFilters para resetear página
+var _origApply = applyFilters;
+applyFilters = function() { _origApply(); _pg = 1; _renderPage(); };
+var _origSort = sortBoats;
+sortBoats = function(btn, type) { _origSort(btn, type); _pg = 1; _renderPage(); };
+var _origClear = clearFilters;
+clearFilters = function() { _origClear(); _pg = 1; _renderPage(); };
+
+// Parchear renderBoats para activar paginación al terminar
+var _origRender = renderBoats;
+renderBoats = function(json) { _origRender(json); setTimeout(function(){ _pg=1; _renderPage(); }, 50); };
+// ─────────────────────────────────────────────────────────────────
+
+// ── MAPA LAZY ─────────────────────────────────────────────────────
+(function() {
+  var mapEl = document.querySelector('.map-embed');
+  if (!mapEl) return;
+  var mo = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var iframe = document.getElementById('mapIframe');
+        if (iframe && iframe.dataset.src) {
+          iframe.src = iframe.dataset.src;
+        }
+        mo.disconnect();
+      }
+    });
+  }, { rootMargin: '200px' });
+  mo.observe(mapEl);
+})();
+// ─────────────────────────────────────────────────────────────────
+
+// ── LAZY INJECT HERO IMAGES ─────────────────────────────────────────
+// Las imágenes hero se almacenan al final del body para no bloquear el primer render
+(function() {
+  function loadHeroImg(id, src) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) { el.src = src; io.disconnect(); }
+      }, { rootMargin: '400px' });
+      io.observe(el);
+    } else {
+      el.src = src;
+    }
+  }
+  var _nbImgV = "assetshero-vender.webp";
+  var _nbImgC = "assetshero-comprar.webp";
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      loadHeroImg('heroImgVender', _nbImgV);
+      loadHeroImg('heroImgComprar', _nbImgC);
+    });
+  } else {
+    loadHeroImg('heroImgVender', _nbImgV);
+    loadHeroImg('heroImgComprar', _nbImgC);
+  }
+})();
+// ──────────────────────────────────────────────────────────────────────
+
+</script>
+</body>
+</html>
