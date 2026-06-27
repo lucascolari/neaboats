@@ -226,15 +226,29 @@
   .map-header .section-label { background: rgba(29,158,117,0.15); color: var(--teal-mid); }
   .map-header h2 { color: #fff; font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 600; margin-bottom: 0.5rem; }
   .map-header p { color: rgba(255,255,255,0.5); font-size: 15px; }
-  .map-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; align-items: start; }
+  .map-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2.5rem; align-items: center; }
   .map-zones { display: flex; flex-direction: column; gap: 12px; }
-  .map-zone { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 14px 16px; transition: background 0.15s, border-color 0.15s; }
-  .map-zone:hover { background: rgba(255,255,255,0.09); border-color: rgba(29,158,117,0.4); }
-  .map-zone-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+  .map-zone { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 14px 16px; cursor: pointer; transition: background 0.15s, border-color 0.15s, transform 0.15s; }
+  .map-zone:hover { background: rgba(255,255,255,0.09); border-color: rgba(29,158,117,0.4); transform: translateX(3px); }
+  .map-zone.active { background: rgba(29,158,117,0.16); border-color: var(--teal); }
+  .map-zone-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.25); flex-shrink: 0; transition: background 0.2s, box-shadow 0.2s; }
+  .map-zone.active .map-zone-dot, .map-zone:hover .map-zone-dot { background: var(--teal); box-shadow: 0 0 0 4px rgba(29,158,117,0.2); }
+  .map-zone-info { flex: 1; }
   .map-zone-info strong { font-size: 14px; color: #fff; font-weight: 600; display: block; }
   .map-zone-info span { font-size: 13px; color: rgba(255,255,255,0.45); }
-  .map-embed { border-radius: var(--radius-xl); overflow: hidden; border: 0.5px solid rgba(255,255,255,0.1); }
-  .map-embed iframe { display: block; width: 100%; height: 380px; border: none; filter: grayscale(0.2); }
+  .map-zone-arrow { color: rgba(255,255,255,0.25); font-size: 17px; opacity: 0; transition: opacity 0.15s, transform 0.15s; }
+  .map-zone:hover .map-zone-arrow, .map-zone.active .map-zone-arrow { opacity: 1; transform: translateX(2px); }
+  .map-zone.active .map-zone-arrow { color: var(--teal-mid); }
+  .map-canvas { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(255,255,255,0.1); border-radius: var(--radius-xl); padding: 1.25rem 1.5rem 1rem; }
+  .map-canvas svg { width: 100%; height: auto; max-height: 380px; display: block; overflow: visible; }
+  .map-river { fill: none; stroke: rgba(93,202,165,0.4); stroke-width: 2.2; stroke-linecap: round; pointer-events: none; }
+  .map-prov { fill: rgba(255,255,255,0.08); stroke: rgba(255,255,255,0.22); stroke-width: 1.5; cursor: pointer; transition: fill 0.25s, stroke 0.25s; }
+  .map-prov:hover { fill: rgba(29,158,117,0.32); }
+  .map-prov.active { fill: var(--teal); stroke: var(--teal-mid); }
+  .map-prov-label { fill: rgba(255,255,255,0.9); font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; text-anchor: middle; pointer-events: none; }
+  .map-pin { fill: #fff; pointer-events: none; }
+  .map-caption { text-align: center; color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 0.9rem; }
+  .map-caption strong { color: var(--teal-mid); font-weight: 600; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.45fr; gap: 3.5rem; align-items: start; }
   .contact-left-title { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; margin-bottom: 0.5rem; }
   .contact-left-sub { font-size: 15px; color: var(--text-sec); line-height: 1.65; margin-bottom: 2rem; }
@@ -292,6 +306,17 @@
   .footer-bottom { border-top: 0.5px solid rgba(255,255,255,0.08); padding-top: 1.5rem; text-align: center; font-size: 13px; color: rgba(255,255,255,0.25); }
   .wa-float { position: fixed; bottom: 26px; right: 26px; z-index: 998; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 28px; color: #fff; text-decoration: none; box-shadow: 0 4px 24px rgba(37,211,102,0.38); transition: transform 0.2s, box-shadow 0.2s; }
   .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(37,211,102,0.52); }
+  /* Microinteracciones */
+  .btn-primary i, .btn-outline i, .btn-wa i, .btn-submit i { transition: transform 0.18s ease; }
+  .btn-primary:hover i, .btn-outline:hover i, .btn-wa:hover i, .btn-submit:hover i { transform: translateX(4px); }
+  .boat-img img { transition: transform 0.5s cubic-bezier(.2,.6,.2,1); }
+  .boat-card:hover .boat-img img { transform: scale(1.07); }
+  .boat-card { transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+  .boat-card:hover { box-shadow: 0 14px 32px rgba(10,25,47,0.10); }
+  .benefit-icon, .step-icon { transition: transform 0.25s ease; }
+  .benefit-card:hover .benefit-icon, .step-card:hover .step-icon { transform: scale(1.1) rotate(-4deg); }
+  .testi-avatar { transition: transform 0.25s ease; }
+  .testi-card:hover .testi-avatar { transform: scale(1.08); }
   @media (max-width: 960px) {
     .boats-grid, .benefits-grid, .testi-grid, .contact-grid, .footer-grid, .map-grid { grid-template-columns: 1fr; }
     .steps-grid { grid-template-columns: 1fr 1fr; }
@@ -502,12 +527,26 @@
     <div class="map-header"><h2>Zona de cobertura NEA</h2><p>Operamos en 4 provincias del noreste argentino</p></div>
     <div class="map-grid">
       <div class="map-zones">
-        <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Chaco</strong><span>Resistencia y Gran Chaco</span></div></div>
-        <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Corrientes</strong><span>Capital, Goya, Curuzú Cuatiá</span></div></div>
-        <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Formosa</strong><span>Capital y zona costera</span></div></div>
-        <div class="map-zone"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Misiones</strong><span>Posadas y costa del Paraná</span></div></div>
+        <div class="map-zone active" data-prov="chaco" onclick="selectProv('chaco')"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Chaco</strong><span>Resistencia y Gran Chaco</span></div><i class="ti ti-arrow-right map-zone-arrow"></i></div>
+        <div class="map-zone" data-prov="corrientes" onclick="selectProv('corrientes')"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Corrientes</strong><span>Capital, Goya y Curuzú Cuatiá</span></div><i class="ti ti-arrow-right map-zone-arrow"></i></div>
+        <div class="map-zone" data-prov="formosa" onclick="selectProv('formosa')"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Formosa</strong><span>Capital y zona costera</span></div><i class="ti ti-arrow-right map-zone-arrow"></i></div>
+        <div class="map-zone" data-prov="misiones" onclick="selectProv('misiones')"><div class="map-zone-dot"></div><div class="map-zone-info"><strong>Misiones</strong><span>Posadas y costa del Paraná</span></div><i class="ti ti-arrow-right map-zone-arrow"></i></div>
       </div>
-      <div class="map-embed"><iframe id="mapIframe" src="about:blank" data-src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1500000!2d-59.5!3d-27.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="map-canvas">
+        <svg viewBox="0 0 360 380" role="img" aria-label="Mapa interactivo del NEA con sus 4 provincias">
+          <path class="map-river" d="M199,126 C191,176 187,228 189,282 C190,312 201,334 226,346" />
+          <path id="prov-formosa" class="map-prov" data-prov="formosa" onclick="selectProv('formosa')" d="M48,86 C50,64 70,58 96,60 L232,70 C250,72 256,86 250,100 L242,128 C230,140 208,138 186,134 L92,126 C64,122 46,108 48,86 Z" />
+          <path id="prov-misiones" class="map-prov" data-prov="misiones" onclick="selectProv('misiones')" d="M250,108 L286,72 C302,52 326,50 338,66 C346,78 338,96 326,112 L292,154 C280,166 262,162 254,146 C248,134 246,120 250,108 Z" />
+          <path id="prov-chaco" class="map-prov" data-prov="chaco" onclick="selectProv('chaco')" d="M66,128 L184,134 C190,150 190,168 188,186 L180,286 C176,310 154,320 126,314 L92,306 C68,299 60,272 62,236 L66,170 C66,150 66,138 66,128 Z" />
+          <path id="prov-corrientes" class="map-prov" data-prov="corrientes" onclick="selectProv('corrientes')" d="M194,140 L256,150 C300,156 318,188 314,224 L302,300 C290,330 258,334 226,326 L196,298 C188,278 188,254 190,228 L194,140 Z" />
+          <circle class="map-pin" cx="214" cy="116" r="3" /><circle class="map-pin" cx="264" cy="120" r="3" /><circle class="map-pin" cx="172" cy="280" r="3" /><circle class="map-pin" cx="206" cy="266" r="3" />
+          <text class="map-prov-label" x="148" y="102">Formosa</text>
+          <text class="map-prov-label" x="300" y="96">Misiones</text>
+          <text class="map-prov-label" x="116" y="222">Chaco</text>
+          <text class="map-prov-label" x="256" y="244">Corrientes</text>
+        </svg>
+        <p class="map-caption" id="mapCaption"><strong>Chaco</strong> · Resistencia y Gran Chaco</p>
+      </div>
     </div>
   </div>
 </div>
@@ -1057,23 +1096,21 @@ var _origRender = renderBoats;
 renderBoats = function(json) { _origRender(json); setTimeout(function(){ _pg=1; _renderPage(); }, 50); };
 // ─────────────────────────────────────────────────────────────────
 
-// ── MAPA LAZY ─────────────────────────────────────────────────────
-(function() {
-  var mapEl = document.querySelector('.map-embed');
-  if (!mapEl) return;
-  var mo = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var iframe = document.getElementById('mapIframe');
-        if (iframe && iframe.dataset.src) {
-          iframe.src = iframe.dataset.src;
-        }
-        mo.disconnect();
-      }
-    });
-  }, { rootMargin: '200px' });
-  mo.observe(mapEl);
-})();
+// ── MAPA INTERACTIVO NEA ──────────────────────────────────────────
+var MAP_PROV = {
+  chaco:      { nombre: 'Chaco',      detalle: 'Resistencia y Gran Chaco' },
+  corrientes: { nombre: 'Corrientes', detalle: 'Capital, Goya y Curuzú Cuatiá' },
+  formosa:    { nombre: 'Formosa',    detalle: 'Capital y zona costera' },
+  misiones:   { nombre: 'Misiones',   detalle: 'Posadas y costa del Paraná' }
+};
+function selectProv(id) {
+  if (!MAP_PROV[id]) return;
+  document.querySelectorAll('.map-zone').forEach(function(z) { z.classList.toggle('active', z.dataset.prov === id); });
+  document.querySelectorAll('.map-prov').forEach(function(p) { p.classList.toggle('active', p.dataset.prov === id); });
+  var cap = document.getElementById('mapCaption');
+  if (cap) cap.innerHTML = '<strong>' + MAP_PROV[id].nombre + '</strong> · ' + MAP_PROV[id].detalle;
+}
+selectProv('chaco');
 // ─────────────────────────────────────────────────────────────────
 
 </script>
