@@ -126,6 +126,14 @@
   .btn-filter-apply { background: var(--teal); color: #fff; border: none; border-radius: var(--radius-sm); padding: 9px 20px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
   .btn-filter-clear { background: none; color: var(--text-sec); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 9px 20px; font-size: 14px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
   .boats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .boat-skeleton { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .boat-skeleton .sk-img { height: 190px; background: #e9edf2; }
+  .boat-skeleton .sk-body { padding: 1.1rem 1.25rem 1.25rem; }
+  .boat-skeleton .sk-line { height: 12px; border-radius: 6px; background: #e9edf2; margin-bottom: 10px; }
+  .boat-skeleton .sk-line:last-child { margin-bottom: 0; }
+  .boat-skeleton .sk-w70 { width: 70%; } .boat-skeleton .sk-w50 { width: 50%; } .boat-skeleton .sk-w40 { width: 40%; }
+  .boat-skeleton .sk-img, .boat-skeleton .sk-line { animation: skpulse 1.3s ease-in-out infinite; will-change: opacity; }
+  @keyframes skpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
   .boat-card { background: var(--bg); border-radius: var(--radius-lg); overflow: hidden; border: 0.5px solid var(--border); transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
   .boat-card:hover { transform: translateY(-3px); border-color: rgba(0,0,0,0.16); }
   .boat-card.hidden { display: none; }
@@ -699,24 +707,39 @@ function galleryMove(d) { gTo(gCur + d); }
   }, {passive:true});
 })();
 
+function boatSkeletons(n) {
+  var card = '<div class="boat-skeleton"><div class="sk-img"></div><div class="sk-body"><div class="sk-line sk-w70"></div><div class="sk-line sk-w50"></div><div class="sk-line sk-w40"></div></div></div>';
+  var html = '';
+  for (var i = 0; i < n; i++) html += card;
+  return html;
+}
+
 async function loadBoatsFromSheets() {
   var grid = document.getElementById('boatsGrid');
-  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-sec)"><i class="ti ti-loader" style="font-size:28px;animation:spin 1s linear infinite"></i></div>';
+  var CACHE_KEY = 'nb_boats_cache_v1';
+  var CACHE_TTL = 10 * 60 * 1000;
 
-  // Cache sessionStorage 5 minutos
-  var CACHE_KEY = 'nb_boats_cache';
-  var CACHE_TTL = 5 * 60 * 1000;
+  // 1) Mostrar al instante lo último que guardamos (aunque esté algo viejo)
+  var hadCache = false, freshCache = false;
   try {
-    var cached = sessionStorage.getItem(CACHE_KEY);
+    var cached = localStorage.getItem(CACHE_KEY);
     if (cached) {
       var parsed = JSON.parse(cached);
-      if (Date.now() - parsed.ts < CACHE_TTL) {
+      if (parsed && parsed.data) {
         renderBoats(parsed.data);
-        return;
+        hadCache = true;
+        freshCache = (Date.now() - parsed.ts) < CACHE_TTL;
       }
     }
   } catch(ex) {}
 
+  // 2) Si no había nada en cache, mostrar esqueletos mientras llega la data
+  if (!hadCache) grid.innerHTML = boatSkeletons(6);
+
+  // 3) Si la cache todavía está fresca, no hace falta ir a la red
+  if (freshCache) return;
+
+  // 4) Traer datos frescos (en segundo plano si ya mostramos algo)
   var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
   var json;
   try {
@@ -733,13 +756,19 @@ async function loadBoatsFromSheets() {
         setTimeout(function() { fail(new Error('Timeout')); }, 8000);
       });
     } catch(e2) {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--text-sec)"><i class="ti ti-alert-circle" style="font-size:36px;color:#E24B4A;display:block;margin-bottom:10px"></i><p style="font-weight:600;margin-bottom:6px">No se pudieron cargar las lanchas</p><p style="font-size:13px;opacity:0.6">Abrí el sitio desde GitHub Pages, no desde tu PC.</p></div>';
+      if (!hadCache) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--text-sec)"><i class="ti ti-alert-circle" style="font-size:36px;color:#E24B4A;display:block;margin-bottom:10px"></i><p style="font-weight:600;margin-bottom:6px">No se pudieron cargar las lanchas</p><p style="font-size:13px;opacity:0.6">Abrí el sitio desde GitHub Pages, no desde tu PC.</p></div>';
       return;
     }
   }
-  // Guardar en cache
-  try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ts: Date.now(), data: json})); } catch(ex) {}
-  renderBoats(json);
+
+  // 5) Guardar y re-dibujar solo si los datos cambiaron (evita parpadeos)
+  var changed = true;
+  try {
+    var prev = localStorage.getItem(CACHE_KEY);
+    if (prev) changed = JSON.stringify(JSON.parse(prev).data) !== JSON.stringify(json);
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ts: Date.now(), data: json}));
+  } catch(ex) {}
+  if (!hadCache || changed) renderBoats(json);
 }
 
 function parseFotos(row, cols) {
