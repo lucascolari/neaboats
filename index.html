@@ -376,7 +376,7 @@
       <a href="#testimonials">Testimonios</a>
       <a href="#contact">Contacto</a>
     </div>
-    <a href="https://www.instagram.com/nea.boats/" target="_blank" class="nav-phone" style="margin-right:1rem"><i class="ti ti-brand-instagram" style="color:#E1306C;font-size:20px"></i></a>
+    <a href="https://www.instagram.com/nea.boats/" target="_blank" rel="noopener noreferrer" class="nav-phone" style="margin-right:1rem"><i class="ti ti-brand-instagram" style="color:#E1306C;font-size:20px"></i></a>
     <a href="tel:+5493624662495" class="nav-cta"><i class="ti ti-phone"></i> +54 9 362 466 2495</a>
     <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menú"><i class="ti ti-menu-2"></i></button>
   </div>
@@ -571,6 +571,7 @@
               <div class="upload-previews" id="uploadPreviews"></div>
             </div>
             <div class="fg full"><label>Comentarios adicionales</label><textarea id="fComentarios" placeholder="Contanos más detalles sobre tu lancha: estado, accesorios, motivo de venta, etc."></textarea></div>
+            <input type="text" id="fWebsite" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0" />
             <div class="fg full"><button class="btn-submit" id="submitBtn" onclick="submitForm()">Contactame ahora <i class="ti ti-arrow-right"></i></button></div>
           </div>
         </div>
@@ -614,15 +615,15 @@
         <div class="fc-row"><i class="ti ti-phone"></i> +54 9 362 466 2495</div>
         <div class="fc-row"><i class="ti ti-mail"></i> mateo@neaboats.com</div>
         <div class="fc-row"><i class="ti ti-map-pin"></i> Resistencia, Chaco – NEA</div>
-        <div class="fc-row"><i class="ti ti-brand-instagram" style="color:#E1306C"></i> <a href="https://www.instagram.com/nea.boats/" target="_blank" style="color:rgba(255,255,255,0.5);text-decoration:none">@nea.boats</a></div>
+        <div class="fc-row"><i class="ti ti-brand-instagram" style="color:#E1306C"></i> <a href="https://www.instagram.com/nea.boats/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.5);text-decoration:none">@nea.boats</a></div>
       </div>
     </div>
     <div class="footer-bottom">© 2026 Neaboats. Todos los derechos reservados.</div>
   </div>
 </footer>
 
-<a href="https://www.instagram.com/nea.boats/" target="_blank" class="wa-float" title="Instagram" style="bottom:90px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)"><i class="ti ti-brand-instagram"></i></a>
-<a href="https://wa.me/5493624662495?text=Hola%20Mateo%2C%20vi%20tu%20web%20y%20me%20interesa%20saber%20m%C3%A1s." target="_blank" class="wa-float"><i class="ti ti-brand-whatsapp"></i></a>
+<a href="https://www.instagram.com/nea.boats/" target="_blank" rel="noopener noreferrer" class="wa-float" title="Instagram" style="bottom:90px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)"><i class="ti ti-brand-instagram"></i></a>
+<a href="https://wa.me/5493624662495?text=Hola%20Mateo%2C%20vi%20tu%20web%20y%20me%20interesa%20saber%20m%C3%A1s." target="_blank" rel="noopener noreferrer" class="wa-float"><i class="ti ti-brand-whatsapp"></i></a>
 
 <div class="modal-overlay" id="boatModal" onclick="closeModalIfOverlay(event)">
   <div class="modal">
@@ -674,6 +675,18 @@ const ICOLORS = ['#1D9E75','#185FA5','#854F0B','#534AB7','#0F6E56'];
 function imgProxy(url, w) {
   if (!url || url.indexOf('http') !== 0) return url;
   return 'https://images.weserv.nl/?url=' + encodeURIComponent(url) + '&w=' + w + '&q=78&output=webp';
+}
+
+// Seguridad: escapar texto de la planilla antes de meterlo en el HTML (anti-XSS)
+function esc(s) {
+  s = (s == null ? '' : String(s));
+  return s.replace(/[&<>"']/g, function(c) {
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+// Codificar una URL para usarla dentro de un atributo HTML sin romperlo
+function attrUrl(u) {
+  return String(u == null ? '' : u).replace(/["'<>]/g, encodeURIComponent);
 }
 
 let gCur = 0, gTot = 0;
@@ -868,7 +881,7 @@ function renderBoats(json) {
 
     var ci = i % COLORS.length;
     var imgH = pf
-      ? '<img src="' + imgProxy(pf, 640) + '" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block" loading="lazy" decoding="async" onerror="if(this.dataset.f){this.style.display=\'none\'}else{this.dataset.f=1;this.src=\'' + pf.replace(/'/g, '%27') + '\'}">'
+      ? '<img src="' + imgProxy(pf, 640) + '" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block" loading="lazy" decoding="async" onerror="if(this.dataset.f){this.style.display=\'none\'}else{this.dataset.f=1;this.src=\'' + attrUrl(pf) + '\'}">'
       : '<i class="ti ti-sailboat" style="font-size:52px;opacity:0.35;color:' + ICOLORS[ci] + '"></i>';
     var badge = fotos.length > 1
       ? '<span class="foto-badge"><i class="ti ti-camera" style="font-size:11px"></i> ' + fotos.length + ' fotos</span>'
@@ -890,23 +903,23 @@ function renderBoats(json) {
     card.innerHTML =
       '<div class="boat-img" style="background:' + COLORS[ci] + '" onclick="openModal(this.closest(\'.boat-card\'))">' +
         imgH +
-        (ubicacion ? '<span class="boat-location">' + ubicacion + '</span>' : '') +
+        (ubicacion ? '<span class="boat-location">' + esc(ubicacion) + '</span>' : '') +
         (nuevo     ? '<span class="boat-badge-new">Nuevo</span>' : '') +
         badge +
       '</div>' +
       '<div class="boat-info">' +
-        '<div class="boat-name">' + nombre + '</div>' +
+        '<div class="boat-name">' + esc(nombre) + '</div>' +
         '<div class="boat-specs">' +
-          (anio   ? '<div class="boat-spec"><i class="ti ti-calendar"></i> Año: '    + anio   + '</div>' : '') +
-          (horas  ? '<div class="boat-spec"><i class="ti ti-clock"></i> Horas: '     + horas  + '</div>' : '') +
-          (motor  ? '<div class="boat-spec"><i class="ti ti-engine"></i> Motor: '    + motor  + '</div>' : '') +
-          (eslora ? '<div class="boat-spec"><i class="ti ti-ruler"></i> Eslora: '    + eslora + '</div>' : '') +
+          (anio   ? '<div class="boat-spec"><i class="ti ti-calendar"></i> Año: '    + esc(anio)   + '</div>' : '') +
+          (horas  ? '<div class="boat-spec"><i class="ti ti-clock"></i> Horas: '     + esc(horas)  + '</div>' : '') +
+          (motor  ? '<div class="boat-spec"><i class="ti ti-engine"></i> Motor: '    + esc(motor)  + '</div>' : '') +
+          (eslora ? '<div class="boat-spec"><i class="ti ti-ruler"></i> Eslora: '    + esc(eslora) + '</div>' : '') +
         '</div>' +
         '<div class="boat-footer">' +
           '<span class="boat-price">$' + precioNum.toLocaleString('es-AR') + '</span>' +
           '<div class="boat-footer-btns">' +
             '<button class="btn-detail" onclick="openModal(this.closest(\'.boat-card\'))"><i class="ti ti-eye"></i> Ver</button>' +
-            '<button class="btn-consult" onclick="consultarWA(\'' + nombre.replace(/'/g, "\\'") + '\',\'$' + precioNum.toLocaleString('es-AR') + '\')"><i class="ti ti-brand-whatsapp"></i> Consultar</button>' +
+            '<button class="btn-consult" onclick="consultarBoat(this.closest(\'.boat-card\'))"><i class="ti ti-brand-whatsapp"></i> Consultar</button>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -967,6 +980,7 @@ document.addEventListener('keydown', function(e) {
 
 function openWA(msg) { window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank'); }
 function consultarWA(n, p) { openWA('Hola Mateo, vi la ' + n + ' (' + p + ') en tu web y me gustaría recibir más información.'); }
+function consultarBoat(card) { consultarWA(card.dataset.name, '$' + (parseInt(card.dataset.price) || 0).toLocaleString('es-AR')); }
 function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
 function animateCount(el, target, dur) {
@@ -1018,6 +1032,9 @@ function previewImages(input) {
   });
 }
 function submitForm() {
+  // Anti-spam: si el campo trampa (honeypot) está lleno, es un bot. Simulamos éxito y no enviamos nada.
+  var hp = document.getElementById('fWebsite');
+  if (hp && hp.value) { document.getElementById('formContent').style.display = 'none'; document.getElementById('formSuccess').style.display = 'block'; return; }
   var nombre = document.getElementById('fNombre').value.trim(),
       tel    = document.getElementById('fTel').value.trim(),
       ciudad = document.getElementById('fCiudad').value.trim();
@@ -1029,7 +1046,7 @@ function submitForm() {
     body: JSON.stringify({nombre: nombre, tel: tel, email: document.getElementById('fEmail').value,
       ciudad: ciudad, marca: document.getElementById('fMarca').value, modelo: document.getElementById('fModelo').value,
       anio: document.getElementById('fAnio').value, precio: document.getElementById('fPrecio').value,
-      comentarios: document.getElementById('fComentarios').value})
+      comentarios: document.getElementById('fComentarios').value, _gotcha: hp ? hp.value : ''})
   })
   .then(function() { document.getElementById('formContent').style.display = 'none'; document.getElementById('formSuccess').style.display = 'block'; })
   .catch(function() {

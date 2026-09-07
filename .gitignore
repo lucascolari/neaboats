@@ -3,6 +3,10 @@ Thumbs.db
 desktop.ini
 .DS_Store
 
+# Descargas incompletas y archivos pesados que no van al repo
+*.crdownload
+*.zip
+
 # Editores
 .vscode/
 .idea/
