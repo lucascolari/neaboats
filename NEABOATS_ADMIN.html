@@ -376,7 +376,7 @@
     try {
       const r = await api({
         action: 'add',
-        nombre: nombre, precio: precio,
+        nombre: nombre, modelo: nombre, precio: precio,
         'año':       document.getElementById('aAnio').value,
         horas:       document.getElementById('aHoras').value,
         motor:       document.getElementById('aMotor').value,
@@ -427,7 +427,7 @@
       const get = function(row, name){ const i = cols.indexOf(name); return i >= 0 && row.c[i] ? (row.c[i].v || '') : ''; };
 
       container.innerHTML = '<div class="boats-list">' + rows.map(function(row){
-        const nombre = get(row,'nombre'); if (!nombre) return '';
+        const nombre = get(row,'modelo') || get(row,'nombre'); if (!nombre) return '';
         const precio = parseInt(String(get(row,'precio')).replace(/\D/g,'')) || 0;
         const anio   = get(row,'año') || get(row,'anio');
         const motor  = get(row,'motor');
