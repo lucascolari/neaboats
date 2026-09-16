@@ -247,7 +247,7 @@
 
     <div class="success-msg" id="successMsg">
       <i class="ti ti-circle-check"></i>
-      <span>¡Lancha publicada! Ya aparece en la web. <a href="index.html" target="_blank" style="color:var(--teal-dark)">Ver web →</a></span>
+      <span>¡Lancha publicada! Ya aparece en la web. <a href="/" target="_blank" style="color:var(--teal-dark)">Ver web →</a></span>
     </div>
   </div>
 
@@ -427,7 +427,7 @@
   function showSuccess() {
     const span = document.querySelector('#successMsg span');
     if (span) span.innerHTML = (editingRow ? '¡Cambios guardados!' : '¡Lancha publicada!') +
-      ' Ya aparece en la web. <a href="index.html" target="_blank" rel="noopener" style="color:var(--teal-dark)">Ver web →</a>';
+      ' Ya aparece en la web. <a href="/" target="_blank" rel="noopener" style="color:var(--teal-dark)">Ver web →</a>';
     document.getElementById('successMsg').style.display = 'block';
     clearForm();
     loadBoatsList();
