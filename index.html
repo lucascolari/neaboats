@@ -898,7 +898,7 @@ function renderBoats(json) {
     card.dataset.horas    = horas;
     card.dataset.desc     = desc;
     card.dataset.fotos    = JSON.stringify(fotos);
-    card.style.cssText    = 'opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .2s';
+    card.style.cssText    = 'transition:border-color .2s, box-shadow .2s, transform .2s';
 
     card.innerHTML =
       '<div class="boat-img" style="background:' + COLORS[ci] + '" onclick="openModal(this.closest(\'.boat-card\'))">' +
@@ -1061,6 +1061,12 @@ document.querySelectorAll('.benefit-card,.step-card,.testi-card').forEach(functi
   el.style.cssText = 'opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .2s';
   revealObserver.observe(el);
 });
+// Red de seguridad: si el observer no llega a disparar, revelar todo a los 2.5s
+setTimeout(function() {
+  document.querySelectorAll('.benefit-card,.step-card,.testi-card').forEach(function(el) {
+    el.style.opacity = '1'; el.style.transform = 'none';
+  });
+}, 2500);
 
 
 // ── PAGINACIÓN ────────────────────────────────────────────────────
