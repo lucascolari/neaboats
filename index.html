@@ -108,10 +108,6 @@
   .btn-outline:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.52); }
   @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
-  .new-banner { background: linear-gradient(90deg, #FEF3C7, #FFF8E1); border: 0.5px solid #F59E0B; border-radius: var(--radius-md); padding: 12px 20px; display: flex; align-items: center; gap: 10px; margin-bottom: 2rem; font-size: 14px; }
-  .new-banner i { color: #D97706; font-size: 18px; flex-shrink: 0; }
-  .new-banner strong { color: #92400E; }
-  .new-banner span { color: #78350F; }
   .section { padding: 5.5rem 2rem; }
   .section-inner { max-width: 1140px; margin: 0 auto; }
   .section-bg { background: var(--bg-soft); }
@@ -438,10 +434,6 @@ src="https://www.facebook.com/tr?id=1431322475805924&ev=PageView&noscript=1"
       <span class="section-label"><i class="ti ti-sailboat"></i> Catálogo</span>
       <h2 class="section-title">Lanchas disponibles hoy</h2>
       <p class="section-sub">Explorá nuestro inventario actualizado de embarcaciones en venta en el NEA.</p>
-    </div>
-    <div class="new-banner" id="newBanner" style="display:none">
-      <i class="ti ti-bell-ringing"></i>
-      <div><strong>Nueva lancha publicada:</strong> <span id="newBannerText"></span></div>
     </div>
   </div>
   <div class="filter-bar">
@@ -867,7 +859,6 @@ function renderBoats(json) {
   }
 
   grid.innerHTML = '';
-  var newest = null;
   var _frag = document.createDocumentFragment();
 
   // Las últimas lanchas agregadas (abajo en el Sheet) se muestran primero, sin tocar el Sheet
@@ -896,8 +887,6 @@ function renderBoats(json) {
 
     var fotos = parseFotos(row, cols);
     var pf    = fotos[0] || '';
-
-    if (nuevo && !newest) newest = nombre + ' · ' + ubicacion + ' · $' + precioNum.toLocaleString('es-AR');
 
     var ci = i % COLORS.length;
     var imgH = pf
@@ -949,10 +938,6 @@ function renderBoats(json) {
   });
   grid.appendChild(_frag);
 
-  if (newest) {
-    document.getElementById('newBannerText').textContent = newest;
-    document.getElementById('newBanner').style.display = 'flex';
-  }
   populateFilters(rows, cols);
 }
 
